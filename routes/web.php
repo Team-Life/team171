@@ -16,3 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+//一般ユーザー
+Route::group(['middleware' => ['auth', 'can:user-higher']], function () {
+    //ここにルートを記述
+});
+
+//管理者以上
+Route::group(['middleware' => ['auth', 'can:admin-higher']], function() {
+    //ここにルートを記述
+});
