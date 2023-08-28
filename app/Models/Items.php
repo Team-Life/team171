@@ -21,7 +21,9 @@ class Items extends Model
     protected $fillable = [
         'id',
         'user_id',
-        'name'
+        'name',
+        'type',
+        'detail'
     ];
     //fillableで設定した値以外は、Laravelでは一括保存・更新処理から除外するようになっている。
     //ここにnullableをつけていないやつやtimestampsみたいな自動で勝手に入るやつ以外を除いて勝手に

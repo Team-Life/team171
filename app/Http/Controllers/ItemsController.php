@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Categories;
+use App\Models\Items;
+use Illuminate\Support\Facades\Auth;//ログインユーザーに関する情報をAuth::～を使えるようにするuse宣言
 
 class ItemsController extends Controller
 {
@@ -47,16 +48,20 @@ class ItemsController extends Controller
             'detail' => 'required|max:300'
             ]);
 
+        //ログインユーザーの情報を取得
+        $login_user = Auth::user();//// もしくは= $request->user();
+
         //上2つを組み合わせて、テーブルに挿入するデータを作成
         $dataToInsert = [
+            'user_id' => $login_user->id,
             'name' => $validated['name'],
             'type' => $validated['type'],
             'detail' => $validated['detail'],
-            //なんかどうやら、idとtimestampsは自動でなんとかしてくれる
+            //idとtimestampsは自動でなんとかしてくれるぽい
         ];
 
         //整理して作った$dataToInsertを挿入する
-        $RegisteredItemPost = Categories::create($dataToInsert);//ここのcreateはレコードを挿入するメソッド
+        $RegisteredItemPost = Items::create($dataToInsert);//ここのcreateはレコードを挿入するメソッド
         return back();/**->with('message','無事送信されました。')**/
     }
 
