@@ -28,4 +28,7 @@ class Items extends Model
     //fillableで設定した値以外は、Laravelでは一括保存・更新処理から除外するようになっている。
     //ここにnullableをつけていないやつやtimestampsみたいな自動で勝手に入るやつ以外を除いて勝手に
     //されるやつ以外を書いておかないと、エラーになる
+    public function category(){
+        return $this->belongsTo(Categories::class);
+    }
 }

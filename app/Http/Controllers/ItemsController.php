@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categories;
 use Illuminate\Http\Request;
 use App\Models\Items;
 use Illuminate\Support\Facades\Auth;//ログインユーザーに関する情報をAuth::～を使えるようにするuse宣言
@@ -11,11 +12,12 @@ class ItemsController extends Controller
 
     public function ShowItemsRegisterScreen()
     {
-        //$choices = Category::all();
+        $choices = Categories::all();
         /**
          * Categoryモデルと紐付いた、Categoryテーブルからデータを全て取得
+         * Categories::all();よりアクセスが少なくて済む
          * **/
-        return view('register_items'/**,compact('choices')**/);
+        return view('register_items',compact('choices'));
     }
 
     /**

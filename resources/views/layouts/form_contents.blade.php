@@ -14,14 +14,9 @@
         <p>
             <select class="form-select rounded-md" aria-label="Default select example" name="type" id="type">
                 <option selected>カテゴリを選択する</option>
-                {{--たぶん、seederしたらこんなかんじにする
                 @foreach ( $choices as $choice)
-                <option value="{{ $choice->type }}">{{ $choice->category_name }}</option>
+                <option value= {{ $choice->type }}>{{ $choice->category_name }}</option>
                 @endforeach
-                --}}
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
             </select>
         </p>
     </div>
