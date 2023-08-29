@@ -24,8 +24,8 @@ function passwordCheck1() {
     let password = document.getElementById('password-input1').value;
 
     // 仮の認証ロジックを示します。実際のアプリケーションでは適切な認証手段を使用してください。
-    if (password === "Miem605750887123") {//左の""には照合させたいパスワードを入れる
-        window.location.href = "https://thinking-weed-portfolio-home-22c5df435d64.herokuapp.com/administrator";//左""内は本来のリンク先URL
+    if (password === "正しいパスワード") {//左の""には照合させたいパスワードを入れる
+        window.location.href = "#";//左""内は本来のリンク先URL
     } else {
         // パスワードが異なる場合、エラーメッセージを表示
         document.getElementById('error-message1').innerText = "パスワードが正しくありません。";
@@ -51,8 +51,8 @@ function passwordCheck2() {
     let password = document.getElementById('password-input2').value;
 
     // 仮の認証ロジックを示します。実際のアプリケーションでは適切な認証手段を使用してください。
-    if (password === "Miem605750887123") {//左の""には照合させたいパスワードを入れる
-        window.location.href = "https://thinking-weed-portfolio-home-22c5df435d64.herokuapp.com/administrator";//左""内は本来のリンク先URL
+    if (password === "正しいパスワード") {//左の""には照合させたいパスワードを入れる
+        window.location.href = "#";//左""内は本来のリンク先URL
     } else {
         // パスワードが異なる場合、エラーメッセージを表示
         document.getElementById('error-message2').innerText = "パスワードが正しくありません。";
@@ -78,8 +78,8 @@ function passwordCheck3() {
     let password = document.getElementById('password-input3').value;
 
     // 仮の認証ロジックを示します。実際のアプリケーションでは適切な認証手段を使用してください。
-    if (password === "Miem605750887123") {//左の""には照合させたいパスワードを入れる
-        window.location.href = "https://thinking-weed-portfolio-home-22c5df435d64.herokuapp.com/github_contact";//左""内は本来のリンク先URL
+    if (password === "正しいパスワード") {//左の""には照合させたいパスワードを入れる
+        window.location.href = "#";//左""内は本来のリンク先URL
     } else {
         // パスワードが異なる場合、エラーメッセージを表示
         document.getElementById('error-message3').innerText = "パスワードが正しくありません。";

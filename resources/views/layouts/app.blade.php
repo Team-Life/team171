@@ -19,7 +19,12 @@
         {{-- publicフォルダ内のcssフォルダのappblade.style.cssを参照 --}}
         <link rel="stylesheet" href="{{ asset('css/appblade.style.css') }}">
 
-            
+        {{-- publicフォルダ内のcssフォルダのregister_view.style.cssを参照 --}}
+        <link rel="stylesheet" href="{{ asset('css/register_view.style.css') }}">
+
+        {{-- publicフォルダ内のcssフォルダのitemsList_view.style.cssを参照 --}}
+        <link rel="stylesheet" href="{{ asset('css/itemsList_view.style.css') }}">
+
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
