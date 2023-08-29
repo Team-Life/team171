@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+//こっちの「Users」モデルは、データーベース定義書に従ったもの
+//一覧表示などをするときにはこちらを使う（検証中です・・）？
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
