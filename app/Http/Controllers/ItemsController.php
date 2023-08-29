@@ -15,7 +15,7 @@ class ItemsController extends Controller
         $choices = Categories::all();
         /**
          * Categoryモデルと紐付いた、Categoryテーブルからデータを全て取得
-         * Categories::all();よりアクセスが少なくて済む
+         *なぜか、ここでは::with('categories')->get();は使えない
          * **/
         return view('register_items',compact('choices'));
     }
