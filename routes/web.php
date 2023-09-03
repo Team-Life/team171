@@ -44,3 +44,13 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+//一般ユーザー
+Route::group(['middleware' => ['auth', 'can:user-higher']], function () {
+    //ここにルートを記述
+});
+
+//管理者以上
+Route::group(['middleware' => ['auth', 'can:admin-higher']], function() {
+    //ここにルートを記述
+});

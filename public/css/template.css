@@ -1,0 +1,198 @@
+@import url(./navigation.css);
+@import url(./footer.css);
+
+/*body全体のCSS*/
+.first_message {
+    width: 80%;
+    text-align: left;
+    margin: 2rem auto;
+    padding-right: 5rem;
+}
+.first_message p {
+    color: black;
+    font-weight: bold;
+}
+.nowtime {
+    margin: 1rem 0rem 1rem 0rem;
+}
+.nowtime h3 {
+    color: cadetblue;
+}
+
+body {
+    background: url(./../images/home-images/body_background1.jpg) no-repeat
+        center center/cover;
+}
+.outerwrap {
+    width: 100%;
+    margin: 0;
+    padding-top: 3%;
+    padding-bottom: 1rem;
+    padding-right: 1rem;
+}
+.innerwrap {
+    margin: 0 auto;
+    padding-top: 15rem;
+    width: 100%;
+}
+
+@media (min-width: 1024px) {
+    .innerwrap {
+        padding: 1.5rem;
+    }
+}
+
+.first_message {
+    width: 80%;
+    text-align: center;
+    margin: 2rem auto;
+    background-color: azure;
+}
+.first_message p {
+    color: black;
+    font-weight: bold;
+}
+
+/*contact.blade.php固有のCSS*/
+.ContactRule {
+    /*※セレクタとしてx-slotやslotは書かない*/
+    color: red;
+    font-size: 150%;
+    font-weight: bolder;
+    text-align: left;
+    margin: 2rem 0 2rem 0;
+}
+
+.Github,
+.Email {
+    height: 100%;
+    border: solid;
+    opacity: 0.9;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+.GithubURL,
+.EmailAddress {
+    text-align: center;
+    margin: auto;
+    padding: auto;
+}
+.GithubURL h2,
+.EmailAddress h2 {
+    margin: 2rem auto;
+    font-size: 120%;
+}
+.GithubURL img {
+    height: 15%;
+    width: 15%;
+    margin: 0.5rem auto;
+}
+.EmailAddress img {
+    height: 20%;
+    width: 20%;
+    margin: 0.5rem auto;
+}
+.VisitorName input,
+.VisitorEmail input {
+    width: 50%;
+    margin: 0;
+    opacity: 0.9;
+    text-align: left;
+}
+.VisitorName p,
+.VisitorEmail p {
+    margin: 0.5rem auto;
+}
+.QuestionOrOpinion textarea {
+    width: 95%;
+    opacity: 0.9;
+    text-align: left;
+}
+.FormField {
+    margin: 2rem 2rem 0 2rem;
+    width: 100%;
+}
+.post_success {
+    width: 100%;
+    margin: 1rem;
+}
+.post_success p {
+    font-size: 200%;
+    color: blue;
+    font-weight: 900;
+}
+
+/*was.blade.php固有のCSS*/
+.introduce {
+    /*※セレクタとしてx-slotやslotは書かない*/
+    color: red;
+    font-size: 150%;
+    font-weight: bolder;
+    text-align: left;
+    margin: 2rem 0 2rem 0;
+}
+.WasWorks.WasCafePoster {
+    margin-top: 4rem;
+    text-align: center;
+    padding: 0.3rem;
+    margin: 0 auto;
+    width: 100%;
+}
+.WasWorks.FictitiousFashionGoodsShop {
+    margin-top: 4rem;
+    text-align: center;
+    padding: 1rem;
+    margin: 0 auto;
+    width: 100%;
+}
+.WasWorks.ReproductionWASMap {
+    margin-top: 4rem;
+    text-align: center;
+    padding: 2rem;
+    margin: 0;
+    width: 100%;
+}
+.WasWorks.CoffeeSegmentEx {
+    margin-top: 4rem;
+    text-align: center;
+    padding: 0.5rem;
+    margin: 0;
+    width: 100%;
+}
+.WasWorks.WasCafePoster img,
+.WasWorks.ReproductionWASMap img,
+.WasWorks.CoffeeSegmentEx img {
+    margin: 0 auto;
+    max-width: 80%;
+}
+.WasWorks.WasCafePoster h2,
+.WasWorks.ReproductionWASMap h2,
+.WasWorks.CoffeeSegmentEx h2,
+.WasWorks.FictitiousFashionGoodsShop h2 {
+    margin: 0;
+    width: 100%;
+}
+.WasWorks.CoffeeSegmentEx h2 p {
+    text-indent: -1.5rem;
+}
+.WasWorks.FictitiousFashionGoodsShop img {
+    margin: 0 auto;
+    width: 85%;
+}
+
+.WasWorks h2 {
+    margin: 2rem auto;
+    padding: 2rem;
+    text-align: left;
+    text-indent: 3rem;
+    font-size: 1.2rem;
+}
+
+/*管理者用ページのCSS*/
+
+.opinion_index {
+    margin: 0 auto;
+    padding: 1rem auto;
+    background-color: white;
+    opacity: 0.9;
+}

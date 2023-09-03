@@ -1,0 +1,44 @@
+@import url(./template.css);
+
+.admin_index{
+    color:blue;
+    font-size: 1.5rem;
+    font-weight: bolder;
+    padding-left: 2rem;
+    margin-top: 3rem;
+}
+
+.contact_id_at{
+    display: flex;
+}
+
+.visitorname_email{
+    display: flex;
+}
+.contact_id_at p{
+    width: 30%;
+    text-align: left;
+    margin:auto 1rem;
+}
+
+.visitorname_email p{
+    width: 50%;
+    text-align: left;
+    margin:auto 1rem;
+}
+
+.question_or_opinion{
+    width: 100%;
+    margin: auto 0;
+    padding: 0.2rem;
+    font-weight: bold;
+}
+.btns{
+    padding-left:5rem ;
+}
+.check_btn,.delete_btn{
+    margin: 0.5rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+    float: right;
+}

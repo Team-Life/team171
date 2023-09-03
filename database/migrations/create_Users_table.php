@@ -11,17 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Users', function (Blueprint $table) {
-            $table->id()->comment('ID');
-            $table->string('name',100)->comment('名前');
-            $table->string('email',255)->comment('メールアドレス');
-            $table->timestamp('email_verified_at')->nullable()->comment('メール確認日時');
-            $table->string('password',255)->comment('パスワード');
-            // nullable()は厳密には、「デフォルト値をNULLにし、」NULLを受け入れるカラムを定義する
-            $table->string('remember_token',100)->nullable()->comment('保持トークン');
-            $table->timestamp('created_at')->nullable()->comment('登録日時');
-            $table->timestamp('updated_at')->nullable()->comment('更新日時');
-            //このprimaryとindexは修飾子ではなく、メソッドらしい
+        Schema::create('users', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
+            $table->tinyInteger('role')->default(0)->index('index_role')->comment('ロール');
+            $table->timestamps();
         });
     }
 
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('Users');
+        Schema::dropIfExists('users');
     }
 };

@@ -1,0 +1,133 @@
+/*ナビゲーションのCSS*/
+@import url(./navigation.css);
+
+/*フッターのCSS*/
+@import url(./footer.css);
+
+/*body全体のCSS*/
+.first_message {
+    width: 80%;
+    text-align: left;
+    margin: 1.5rem auto;
+    padding-right: 5rem;
+}
+.first_message p {
+    color: black;
+    font-weight: bold;
+}
+
+body {
+    background: url(./../images/home-images/body_background1.jpg) no-repeat
+        center center/cover;
+}
+.outerwrap {
+    width: 100%;
+    margin: 0;
+    padding-top: 3%;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+.innerwrap {
+    margin: 0 auto;
+    padding-top: 15rem;
+    width: 100%;
+}
+
+@media (min-width: 1024px) {
+    .innerwrap {
+        padding: 1.5rem;
+    }
+}
+
+/*グリッド全体のCSS*/
+
+.biography,
+.myskills,
+.WorksAtWas,
+.SCD_map,
+.NoTenki,
+.OragaEC_maker {
+    padding: 1rem;
+    opacity: 0.9;
+}
+.article {
+    width: 90%;
+    text-align: left;
+}
+.topic {
+    width: 100%;
+    margin-right: 3rem;
+    padding-left: 0;
+}
+.topic img {
+    width: 10%;
+    height: 10%;
+    margin: 0 1rem 0 0;
+    padding-left: 0;
+}
+.topic h2 {
+    display: inline-block;
+    margin: auto 0;
+    font-size: 130%;
+}
+.topic h2 span {
+    font-size: 150%;
+}
+/*biographyのCSS*/
+.Myname {
+    font-size: 120%;
+}
+.ToContact,
+.ToWorks {
+    margin: auto;
+}
+.ToContact p,
+.ToWorks p {
+    text-align: center;
+    font-size: 1rem;
+}
+
+/*mySkillsのCSS*/
+.skillList p {
+    text-indent: 1rem;
+    font-size: 150%;
+}
+.skillList h2 {
+    font-size: 150%;
+}
+.tools {
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+    width: 95%;
+    padding-left: 2rem;
+    font-size: 130%;
+}
+.skillList span {
+    width: 90%;
+    margin-left: 2rem;
+    text-align: right;
+}
+.learncontents {
+    padding: 1rem;
+}
+.learncontents span {
+    font-size: 120%;
+    margin: 0;
+    width: 80%;
+}
+/*WorksAtWasのCSS*/
+
+.was h2 {
+    width: 100%;
+    font-size: 130%;
+    margin: auto 0;
+}
+.was img {
+    margin: 0;
+}
+.scd_map_image h2 {
+    width: 100%;
+    font-size: 1.5rem;
+    margin: auto 0;
+}
