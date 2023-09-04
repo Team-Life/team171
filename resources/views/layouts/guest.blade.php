@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>Portfolio by thinking-weed</title>
+        <title>商品管理システム</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -17,19 +17,46 @@
         <link href="./../../../bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css" rel="stylesheet">
 
         <link href="{{ asset('/css/guest.css') }}" rel="stylesheet">
+        <link href="{{ asset('/css/home.css') }}" rel="stylesheet">
+        <link href="{{ asset('/css/template.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/navigation.css') }}" rel="stylesheet">
+        <link href="{{ asset('/css/responsive_m.css') }}" rel="stylesheet" media="screen and (max-width: 767px)">
+
+        <style>
+            @media (min-width: 1282px) {  {{-- 1283px 以上の幅の場合 --}}
+                .conditional-include1 {
+                    display: block;  {{-- 表示させる --}}
+                }
+                .conditional-include2 {
+                    display: none;  {{-- 非表示にする --}}
+                }
+            }
+            @media (max-width: 1282px) {  {{-- 1282px 以下の幅の場合 --}}
+                .conditional-include1 {
+                    display: none;  {{-- 非表示にする --}}
+                }
+                .conditional-include2 {
+                    display: block;  {{-- 表示させる --}}
+                }
+            }
+        </style>
 
         <!-- Scripts -->
-        <script src="{{ asset('/js/guest.js') }}"></script>
+        {{-- <script src="{{ asset('/js/guest.js') }}"></script>
         <script src="{{ asset('/js/home.js') }}"></script>
         <script src="{{ asset('/js/appblade.js') }}"></script>
         <script src="{{ asset('/js/WindowModal_nav.js') }}"></script>
         <script src="{{ asset('/js/modal_adminPage.js') }}"></script>
-        <script src="{{ asset('/js/modal_ContactPage.js') }}"></script>
+        <script src="{{ asset('/js/modal_ContactPage.js') }}"></script> --}}
 
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
-        <div class="innerwrap min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0">
+        @include('layouts.navigations.home_nav')
+        <div class="outerwrap min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0">
+            @if (isset($header))
+            {{ $header }}
+            @endif
             <div class="form w-full sm:max-w-md mt-6 px-6 shadow-md overflow-hidden sm:rounded-lg">
                 {{ $slot }}{{-- login.blade.phpなどのviews/auth/以下の各.blade.phpの外側が
                     <x-guest-layout>～</x-guest-layout>で囲まれているので、ここの

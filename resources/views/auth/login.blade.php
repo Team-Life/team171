@@ -1,4 +1,7 @@
 <x-guest-layout>
+    {{-- <x-slot name="header">
+        @include('layouts.navigations.home_nav')
+    </x-slot> --}}
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 

@@ -20,6 +20,17 @@ class AuthenticatedSessionController extends Controller
         return view('auth.login');
     }
 
+    public function logout(Request $request)
+    {
+        Auth::logout(); // ログアウト処理
+
+        return redirect()->route('home');// ログアウト後のリダイレクト（ホーム画面に戻る）
+    }
+        // なんか↑のメソッドはだめでした。
+        // ４０３THIS ACTION IS UNAUTHORIZED.とかいうのに現状だとなる
+
+
+
     /**
      * Handle an incoming authentication request.
      */
@@ -29,7 +40,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::welcome);
+        return redirect()->intended(RouteServiceProvider::home);
     }
 
     /**

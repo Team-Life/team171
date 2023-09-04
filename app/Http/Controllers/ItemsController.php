@@ -25,7 +25,9 @@ class ItemsController extends Controller
      */
     public function index()
     {
-        //
+        //小堀さん上をまねしてここにメソッドを書いて下さい。その時にall()でデータベースから拾ってきて
+        //compactで一覧表示の作ったbladeに渡してください。
+
     }
 
     /**

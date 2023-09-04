@@ -27,6 +27,6 @@ class RegistrationTest extends TestCase
         ]);
 
         $this->assertAuthenticated();
-        $response->assertRedirect(RouteServiceProvider::welcome);
+        $response->assertRedirect(RouteServiceProvider::home);
     }
 }

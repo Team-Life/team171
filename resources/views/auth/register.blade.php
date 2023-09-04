@@ -1,4 +1,7 @@
 <x-guest-layout>
+    {{-- <x-slot name="header">
+        @include('layouts.navigations.home_nav')
+    </x-slot> --}}
     <form method="POST" action="{{ route('register') }}">
         @csrf
 

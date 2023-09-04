@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthenticatedSessionController as AuthAuthenticatedSessionController;
 use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthenticatedSessionController;
+use App\Http\Controllers\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {return view('welcome');})->name('home');
+Route::get('/', function () {return view('home');})->name('home');
 
 Route::get('/dashboard', function () {return view('dashboard');})->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -37,6 +40,10 @@ Route::get('/register/items/view',[ItemsController::class,'ShowItemsRegisterScre
 
 Route::post('/register/items/post',[ItemsController::class,'store'])->name('register_items.post');
 
+Route::get('/login/view',function () {return view('auth.login');})->name('login_screen');
+
+Route::get('/register/view',function () {return view('auth.register');})->name('register_screen');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -48,9 +55,12 @@ require __DIR__.'/auth.php';
 //一般ユーザー
 Route::group(['middleware' => ['auth', 'can:user-higher']], function () {
     //ここにルートを記述
+    Route::post('/registered_users/members',[UsersController::class,'store'])->name('members');
+    Route::get('/logout',[AuthenticatedSessionController::class,'logout'])->name('logout');
 });
 
 //管理者以上
 Route::group(['middleware' => ['auth', 'can:admin-higher']], function() {
     //ここにルートを記述
 });
+// この管理者以上とは何か？
