@@ -1,0 +1,58 @@
+@import url(./navigation.css);
+@import url(./footer.css);
+
+/* app.blade.css全体のCSS */
+
+.outerwrap {
+    width: 100%;
+    margin:auto 0;
+    padding: 1rem;
+}
+.innerwrap {
+    margin: 0 auto;
+    padding-top: 15rem;
+    width: 100%;
+}
+
+@media (min-width: 1024px) {
+    .innerwrap {
+        padding: 1.5rem;
+    }
+}
+
+.register_form{
+    margin-top: 3rem;
+}
+
+.FormField {
+    margin: 2rem 2rem 0 2rem;
+    width: 100%;
+}
+.post_success {
+    width: 100%;
+    margin: 1rem;
+}
+.post_success p {
+    font-size: 200%;
+    color: blue;
+    font-weight: 900;
+}
+
+/*was.blade.php固有のCSS*/
+.introduce {
+    /*※セレクタとしてx-slotやslotは書かない*/
+    color: red;
+    font-size: 150%;
+    font-weight: bolder;
+    text-align: left;
+    margin: 2rem 0 2rem 0;
+}
+
+/*管理者用ページのCSS*/
+
+.opinion_index {
+    margin: 0 auto;
+    padding: 1rem auto;
+    background-color: white;
+    opacity: 0.9;
+}
