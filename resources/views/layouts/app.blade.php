@@ -18,24 +18,24 @@
         <link href="./../../../../bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css" rel="stylesheet" >
 
         {{-- responsive navigation --}}
-        <style>
-            @media (min-width: 1282px) {  {{-- 1283px 以上の幅の場合 --}}
+        {{-- <style>
+            @media (min-width: 1282px) {   1283px 以上の幅の場合
                 .conditional-include1 {
-                    display: block;  {{-- 表示させる --}}
+                    display: block;   表示させる
                 }
                 .conditional-include2 {
-                    display: none;  {{-- 非表示にする --}}
+                    display: none;   非表示にする
                 }
             }
-            @media (max-width: 1282px) {  {{-- 1282px 以下の幅の場合 --}}
+            @media (max-width: 1282px) {   1282px 以下の幅の場合
                 .conditional-include1 {
-                    display: none;  {{-- 非表示にする --}}
+                    display: none;   非表示にする
                 }
                 .conditional-include2 {
-                    display: block;  {{-- 表示させる --}}
+                    display: block;   表示させる
                 }
             }
-        </style>
+        </style> --}}
 
         {{-- Styles ! tailwindcss v3.2.4 | MIT License | https://tailwindcss.com --}}
         <style>
@@ -45,8 +45,9 @@
         {{-- 追加：外部CSSファイルのリンク --}}
         <link href="{{ asset('/css/home.css') }}" rel="stylesheet">
         <link href="{{ asset('/css/template.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/register_view.style.css') }}" rel="stylesheet" >
-        <link href="{{ asset('/css/responsive_m.css') }}" rel="stylesheet" media="screen and (max-width: 767px)">
+        <link href="{{ asset('/css/navigation.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/register_view.css') }}" rel="stylesheet" >
+        {{-- <link href="{{ asset('/css/responsive_m.css') }}" rel="stylesheet" media="screen and (max-width: 767px)"> --}}
 
         {{-- BootstrapのCSS bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css --}}
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
@@ -61,11 +62,11 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     </head>
-    <body class="appbody font-sans antialiased">
-        <div class="outerwrap">
-            @if (isset($header))
+    <body class="font-sans antialiased">
+        @if (isset($header))
             {{ $header }}
-            @endif
+        @endif
+        <div class="outerwrap">
             {{ $slot }}
         </div>
         {{-- @include('layouts.footer') --}}

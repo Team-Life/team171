@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        @include('layouts.navigations.home_nav')
+        @include('layouts.navigations.main_nav')
     </x-slot>
 
     <div class="py-12">

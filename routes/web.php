@@ -1,10 +1,12 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController as AuthAuthenticatedSessionController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthenticatedSessionController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UsersController;
 
 /*
@@ -18,9 +20,9 @@ use App\Http\Controllers\UsersController;
 |
 */
 
-Route::get('/', function () {return view('home');})->name('home');
+Route::get('/', [HomeController::class,'showHome'])->name('home');
 
-Route::get('/dashboard', function () {return view('dashboard');})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [HomeController::class,'showDashboard'])->middleware(['auth', 'verified'])->name('dashboard');
 
 /**Controllerを使ったRoute設定は下記のように
  * Route::HTTPメソッド('php artisan serveをしたときにでてくるやつに付随させるURLの末尾（※自分で決め手よい）')
@@ -40,9 +42,9 @@ Route::get('/register/items/view',[ItemsController::class,'ShowItemsRegisterScre
 
 Route::post('/register/items/post',[ItemsController::class,'store'])->name('register_items.post');
 
-Route::get('/login/view',function () {return view('auth.login');})->name('login_screen');
+Route::get('/login/view',[AuthController::class,'showUserLoginPage'])->name('login_screen');
 
-Route::get('/register/view',function () {return view('auth.register');})->name('register_screen');
+Route::get('/register/view',[AuthController::class,'showUserRegisterPage'])->name('register_screen');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
