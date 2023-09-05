@@ -46,6 +46,8 @@ Route::get('/login/view',[AuthController::class,'showUserLoginPage'])->name('log
 
 Route::get('/register/view',[AuthController::class,'showUserRegisterPage'])->name('register_screen');
 
+Route::get('/index/view',[ItemsIndexController::class,'index'])->name('items_screen');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
