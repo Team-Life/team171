@@ -6,28 +6,32 @@ use App\Models\Categories;
 use Illuminate\Http\Request;
 use App\Models\Items;
 use Illuminate\Support\Facades\Auth;//ログインユーザーに関する情報をAuth::～を使えるようにするuse宣言
+use App\Models\Users;//<--User情報をデータベースのusersテーブルから持ってくるために書く宣言
 
-class ItemsController extends Controller
+class ItemsRegisterController extends Controller
 {
 
     public function ShowItemsRegisterScreen()
     {
         $choices = Categories::all();
+        $auth_users = Users::all();//Usersテーブルの情報をデータベースのusersテーブルから全て取得
+        $items = Items::all();
+        $login_user = Auth::user();//ログインユーザー情報を取得
         /**
          * Categoryモデルと紐付いた、Categoryテーブルからデータを全て取得
          *なぜか、ここでは::with('categories')->get();は使えない
          * **/
-        return view('register_items',compact('choices'));
+        return view('register_items',compact('choices','auth_users','items','login_user'));
     }
 
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //小堀さん上をまねしてここにメソッドを書いて下さい。その時にall()でデータベースから拾ってきて
-        //compactで一覧表示の作ったbladeに渡してください。
-
+        $auth_users = Users::all();//Usersテーブルの情報をデータベースのusersテーブルから全て取得
+        $items = Items::all();
+        $login_user = Auth::user();//ログインユーザー情報を取得
+        return view('index_items',compact('auth_users','items','login_user'));
+        //表示したいblade.phpファイルがresourcesのviewsから見て何らかのフォルダに入っている場合、
+        // 上記のように.でつなげる。上ならviewsの中のauthフォルダの中のlogin.blade.phpを表示
     }
 
     /**

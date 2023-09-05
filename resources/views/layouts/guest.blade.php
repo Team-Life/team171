@@ -16,7 +16,8 @@
         {{-- BootstrapのCSS --}}
         <link href="./../../../bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css" rel="stylesheet">
 
-        <link href="{{ asset('/css/guest.css') }}" rel="stylesheet">
+        <link href="{{ asset('/css/login_screen.css') }}" rel="stylesheet">
+        <link href="{{ asset('/css/register_screen.css') }}" rel="stylesheet">
         <link href="{{ asset('/css/home.css') }}" rel="stylesheet">
         <link href="{{ asset('/css/template.css') }}" rel="stylesheet">
         <link href="{{ asset('css/navigation.css') }}" rel="stylesheet">
@@ -49,14 +50,14 @@
         <script src="{{ asset('/js/modal_adminPage.js') }}"></script>
         <script src="{{ asset('/js/modal_ContactPage.js') }}"></script> --}}
 
-        <!-- @vite(['resources/css/app.css', 'resources/js/app.js']) -->
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
         @if (isset($header))
         {{ $header }}
         @endif
         <div class="outerwrap">
-            <div class="form w-full sm:max-w-md mt-6 px-6 shadow-md overflow-hidden sm:rounded-lg">
+            <div class="form_frame">
                 {{ $slot }}{{-- login.blade.phpなどのviews/auth/以下の各.blade.phpの外側が
                     <x-guest-layout>～</x-guest-layout>で囲まれているので、ここの
                     slotには、レスポンスに対して、対応する部分の.blade.phpが入りブラウザに表示される--}}

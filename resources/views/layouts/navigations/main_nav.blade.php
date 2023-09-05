@@ -4,19 +4,18 @@
         {{-- 右側のリンクとかチェックボックス --}}
         @if(Auth::check())
         <div class="Itempagelinks">
-            <a href="#" >商品一覧</a>
+            <a href="{{ route('index_items.view') }}" >商品一覧</a>
             <a href="{{ route('register_items.view') }}" >商品登録</a>
         </div>
         @endif
         <div class="users_selectbox">
-                <select class="form-select rounded-md" aria-label="Default select example" name = Auth::user()->name id="members_name">
+                <select class="form-select rounded-md" aria-label="Default select example" name = Auth::user()->name id="members_name" >
                     <option selected>登録したユーザー</option>
                     @auth
-                        <option value="1">A太郎</option>
-                        <option value="2">B太郎</option>
-                            {{-- @foreach ( $choices as $choice)
-                            <option value= {{ $choice->type }}>{{ $choice->category_name }}</option>
-                            @endforeach みたいなかんじにする？--}}
+                        @foreach ( $auth_users as $auth_user)
+                        <option value= {{ $auth_user -> id }}>{{ $auth_user -> name }}</option>
+                        @endforeach
+                            {{-- --}}
                     @endauth
                     {{-- なお、GPT大先生によると、@if(Auth::check())と@authは微妙にちがいがあり、
                         前者は現在、誰かがログインしている状態、後者は、今ログインしていなくても過去に１回でもログインしており

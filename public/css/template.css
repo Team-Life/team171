@@ -5,9 +5,8 @@
 
 .outerwrap {
     width: 100%;
-    margin: 0;
-    padding-top: 3%;
-    padding-bottom: 1rem;
+    margin:auto 0;
+    padding: 1rem;
 }
 .innerwrap {
     margin: 0 auto;

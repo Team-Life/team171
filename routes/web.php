@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController as AuthAuthenticatedSessionController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\ItemsController;
+use App\Http\Controllers\ItemsRegisterController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthenticatedSessionController;
@@ -36,17 +36,15 @@ Route::get('/dashboard', [HomeController::class,'showDashboard'])->middleware(['
  *putかpatch（データの）「更新」
  *delete（データの）「削除」
  * **/
+Route::get('/index/view',[ItemsRegisterController::class,'index'])->name('index_items.view');
 
+Route::get('/register/items/view',[ItemsRegisterController::class,'ShowItemsRegisterScreen'])->name('register_items.view');
 
-Route::get('/register/items/view',[ItemsController::class,'ShowItemsRegisterScreen'])->name('register_items.view');
-
-Route::post('/register/items/post',[ItemsController::class,'store'])->name('register_items.post');
+Route::post('/register/items/post',[ItemsRegisterController::class,'store'])->name('register_items.post');
 
 Route::get('/login/view',[AuthController::class,'showUserLoginPage'])->name('login_screen');
 
 Route::get('/register/view',[AuthController::class,'showUserRegisterPage'])->name('register_screen');
-
-Route::get('/index/view',[ItemsIndexController::class,'index'])->name('items_screen');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

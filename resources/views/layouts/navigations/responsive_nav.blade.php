@@ -21,6 +21,4 @@
             </button>
         </div>
     </div>
-    {{-- パスワード入力用モーダル --}}
-    @include('modals.password-authentication-modal.password-authentication-modal2')
 </nav>
