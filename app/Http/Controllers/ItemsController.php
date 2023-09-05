@@ -8,7 +8,7 @@ use App\Models\Items;
 use Illuminate\Support\Facades\Auth;//ログインユーザーに関する情報をAuth::～を使えるようにするuse宣言
 use App\Models\Users;//<--User情報をデータベースのusersテーブルから持ってくるために書く宣言
 
-class ItemsRegisterController extends Controller
+class ItemsController extends Controller
 {
 
     public function ShowItemsRegisterScreen()
