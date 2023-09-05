@@ -10,6 +10,9 @@
         @endif
         <div class="users_selectbox">
                 <select class="form-select rounded-md" aria-label="Default select example" name = Auth::user()->name id="members_name" >
+                    @if(Auth::check())
+                    <option value = {{ Auth::user()->name }}>{{ Auth::user()->name }}</option>
+                    @else
                     <option selected>登録したユーザー</option>
                     @auth
                         @foreach ( $auth_users as $auth_user)
@@ -17,6 +20,7 @@
                         @endforeach
                             {{-- --}}
                     @endauth
+                    @endif
                     {{-- なお、GPT大先生によると、@if(Auth::check())と@authは微妙にちがいがあり、
                         前者は現在、誰かがログインしている状態、後者は、今ログインしていなくても過去に１回でもログインしており
                         データーベースにユーザーの情報が残っている場合を指すらしい--}}

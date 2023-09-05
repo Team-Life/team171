@@ -24,7 +24,7 @@ class AuthenticatedSessionController extends Controller
     {
         Auth::logout(); // ログアウト処理
 
-        return redirect()->route('home');// ログアウト後のリダイレクト（ホーム画面に戻る）
+        return redirect('/');// ログアウト後のリダイレクト（ホーム画面に戻る）
     }
         // なんか↑のメソッドはだめでした。
         // ４０３THIS ACTION IS UNAUTHORIZED.とかいうのに現状だとなる

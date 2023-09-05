@@ -52,14 +52,18 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
+
 require __DIR__.'/auth.php';
 
 //一般ユーザー
 Route::group(['middleware' => ['auth', 'can:user-higher']], function () {
-    //ここにルートを記述
-    Route::post('/registered_users/members',[UsersController::class,'store'])->name('members');
-    Route::get('/logout',[AuthenticatedSessionController::class,'logout'])->name('logout');
+    // 他のルート定義 は一旦取り除く
+    Route::post('/registered_users/members', [UsersController::class, 'store'])->name('members');
+    // ログアウトのルート定義
+    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 });
+
 
 //管理者以上
 Route::group(['middleware' => ['auth', 'can:admin-higher']], function() {
