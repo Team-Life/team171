@@ -18,7 +18,6 @@
                         @foreach ( $auth_users as $auth_user)
                         <option value= {{ $auth_user -> id }}>{{ $auth_user -> name }}</option>
                         @endforeach
-                            {{-- --}}
                     @endauth
                     @endif
                     {{-- なお、GPT大先生によると、@if(Auth::check())と@authは微妙にちがいがあり、
@@ -28,8 +27,11 @@
         </div>
         @if(Auth::check())
         <div class="profile_logout_links">
-            <a href="{{ route('profile.edit') }}" >アカウント編集</a>
-            <a href="{{ route('logout') }}" >ログアウト</a>
+            <a href="{{ route('profile.edit') }}">アカウント編集</a>
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit">ログアウト</button>
+            </form>
         </div>
         @endif
     </div>

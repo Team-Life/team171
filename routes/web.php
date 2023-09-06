@@ -67,8 +67,6 @@ Route::group(['middleware' => ['auth', 'can:admin-higher']], function() {
     //ここにルートを記述
     // 他のルート定義 は一旦取り除く
     Route::post('/registered_users/members', [UsersController::class, 'store'])->name('members');
-    // // ログアウトのルート定義
-    // Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 });
 // この管理者以上とは何か？
 

@@ -18,7 +18,7 @@ class AuthServiceProvider extends ServiceProvider
 
     /**
      * Register any authentication / authorization services.
-     * 
+     *
      * @return void
      */
     public function boot()
@@ -31,7 +31,7 @@ class AuthServiceProvider extends ServiceProvider
         });
         // 一般ユーザーに許可
         Gate::define('user-higher', function ($user){
-            return ($user->role > 10 && $user->role <= 100);
+            return ($user->role === 0);
         });
     }
 }

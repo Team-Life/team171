@@ -41,7 +41,7 @@
     scroll-behavior: smooth;
     margin: auto 0;
 }
-.Itempagelinks a:hover,.profile_logout_links a:hover {
+.Itempagelinks a:hover,.profile_logout_links a:hover,.profile_logout_links form:hover {
     text-decoration: underline;
     color: blue;
 }
@@ -57,18 +57,19 @@
 
 .profile_logout_links{
     position: absolute;
-    top: 0;
+    top: 1rem;
     right: 37rem;
     padding:auto 1rem;
     margin: auto 0;
+    display: flex;
 }
-.profile_logout_links a{
-    display: inline-block;
-    padding: 1rem;
+.profile_logout_links a,.profile_logout_links form{
+    display: block;
     font-size: 1.2rem;
-    scroll-behavior: smooth;
-    margin: auto 0;
+    margin:auto 1rem;
 }
+
+
 /*home_navのCSS*/
 
 .homenavbar {
