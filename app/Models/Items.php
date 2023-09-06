@@ -31,10 +31,10 @@ class Items extends Model
     public function category(){
         return $this->belongsTo(Categories::class);
     }
-    public function user1(){
+    public function user(){
         return $this->belongsTo(Users::class);
     }
-    public function user2(){
+    public function authuser(){
         return $this->belongsTo(User::class);
     }
 }
