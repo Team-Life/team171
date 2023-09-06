@@ -1,5 +1,5 @@
 /.phpunit.cache
-# /node_modules このコメントアウトでnpm run devをしなくても済むはず
+# /node_modules このコメントアウトでnpm run devをしなくても済むはずです。
 /public/build
 /public/hot
 /public/storage
