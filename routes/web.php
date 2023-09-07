@@ -85,3 +85,4 @@ Route::group(['middleware' => ['auth', 'can:admin-higher']], function() {
 
 // roleのカラムの値をもとに管理者以上と一般ユーザーを振り分けられるようにする。
 // 具体的には管理者以上は商品登録をできるようにする。
+
