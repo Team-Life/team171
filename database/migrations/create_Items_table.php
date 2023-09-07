@@ -18,6 +18,8 @@ return new class extends Migration
             $table->smallInteger('type')->nullable()->comment('種別');
             // nullable()は厳密には、「デフォルト値をNULLにし、」NULLを受け入れるカラムを定義する
             $table->string('detail',500)->nullable()->comment('詳細');
+            $table->softDeletes()->comment('0なら表示、1なら論理削除'); // deleted_at カラムを追加、論理削除で利用
+            $table->integer('updated_by')->comment('情報更新者（ログイン中管理者）のユーザーid');
             $table->timestamp('created_at')->nullable()->comment('登録日時');
             $table->timestamp('updated_at')->nullable()->comment('更新日時');
             //このprimaryとindexは修飾子ではなく、メソッドらしい

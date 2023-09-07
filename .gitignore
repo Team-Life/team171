@@ -1,5 +1,5 @@
 /.phpunit.cache
-
+/node_modules
 #  上のコメントアウトでnpm run devをしなくても済むはずです。
 /public/build
 /public/hot
@@ -10,7 +10,7 @@
 .env.backup
 .env.production
 .phpunit.result.cache
-Homestead.json 
+Homestead.json
 Homestead.yaml
 auth.json
 npm-debug.log

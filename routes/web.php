@@ -79,6 +79,9 @@ Route::group(['middleware' => ['auth', 'can:admin-higher']], function() {
     //管理者アカウントのみ商品を登録することができるためのルート設定
     Route::post('/register/items/post',[ItemsController::class,'store'])->name('register_items.post');
 
+    Route::get('/items/information/edit/view', [ItemsController::class, 'editorview'])->name('items.editor.view');
+
+    Route::patch('/items/information/edit/update', [ItemsController::class, 'update'])->name('items.info.update');
 });
 // この管理者以上は、ProvidersのAuthServiceProvider.phpに書かれた条件式に従う
 

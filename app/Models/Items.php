@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Items extends Model
 {
@@ -23,7 +24,10 @@ class Items extends Model
         'user_id',
         'name',
         'type',
-        'detail'
+        'detail',
+        'deleted_at',
+        'updated_by',
+        'updated_at'
     ];
     //fillableで設定した値以外は、Laravelでは一括保存・更新処理から除外するようになっている。
     //ここにnullableをつけていないやつやtimestampsみたいな自動で勝手に入るやつ以外を除いて勝手に
@@ -36,5 +40,17 @@ class Items extends Model
     }
     public function authuser(){
         return $this->belongsTo(User::class);
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::updating(function ($item) {
+            $user = Auth::user();
+            if ($user) {
+                $item->updated_by = $user->id; // ログインユーザーのIDを設定
+            }
+        });
     }
 }

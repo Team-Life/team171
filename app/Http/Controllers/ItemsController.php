@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ItemsUpdateRequest;
+use App\Http\Request\RedirectResponse;
 use App\Models\Categories;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\View\View;
 use App\Models\Items;
 use Illuminate\Support\Facades\Auth;//ログインユーザーに関する情報をAuth::～を使えるようにするuse宣言
 use App\Models\Users;//<--User情報をデータベースのusersテーブルから持ってくるために書く宣言
+use Illuminate\Http\RedirectResponse as HttpRedirectResponse;
 
 class ItemsController extends Controller
 {
@@ -84,18 +89,34 @@ class ItemsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function editorview(Request $request): View
     {
-        //
+        $auth_users = Users::all();//Usersテーブルの情報をデータベースのusersテーブルから全て取得
+        $login_user = Auth::user();//ログインユーザー情報を取得
+        $registered_item_informations = Items::all();
+        return view('layouts.items_info_edit.edit', [
+            'inputIteminfo' => $request,
+        ],compact('auth_users','login_user','registered_item_informations'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        //
+    public function update(Request $request)
+{
+    if ($request->isDirty('name') || $request->isDirty('type') || $request->isDirty('detail')||$request->isDirty('deleted_at')) {
+        // モデルの更新時に updated_at タイムスタンプは自動的に更新されるため、ここでは設定不要
     }
+
+    // モデルの更新処理を実行するコードを追加
+    $request->save();
+    // リダイレクトなどの適切なレスポンスを返す
+    return Redirect::route('items.editor.view')->with('status','items-updated');
+}
+    // 具体的には、$request->isDirty('type')は、現在のリクエストで送信されたデータと、元のデータ
+    // （通常、データベースから読み込まれたデータ）とを比較します。
+    // そして、指定した属性（'type'）がリクエストデータと元のデータで異なる場合に true を返し、
+    // 同じ場合には false を返します。
 
     /**
      * Remove the specified resource from storage.

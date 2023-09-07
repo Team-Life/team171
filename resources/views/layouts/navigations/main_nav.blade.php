@@ -7,6 +7,7 @@
             <a href="{{ route('home') }}" >{{ 'Home' }}</a>
             <a href="{{ route('index_items.view') }}" >商品一覧</a>
             <a href="{{ route('register_items.view') }}" >商品登録</a>
+            <a href="#">{{ '商品詳細/情報編集' }}</a>
         </div>
         @endif
         <div class="users_selectbox">
