@@ -74,8 +74,8 @@
                 <div class="start-menu" style="margin-top: 2rem;">
                     <div class="dashboard-menu">
                         <a href="{{ route('dashboard') }}" >
-                            {{'Dashboard'}}
-                            <br>{{ '（※ログインセッションが切れている場合、下がYou are not logged in yet!になります）' }}
+                            <span>ホームメニューへ</span>（ログイン状態⇒ホームメニューへ、非ログイン状態⇒ログイン画面へ　遷移します。）
+                            <br>{{ '（※ログアウトしている場合、下がYou are not logged in yet!になります）' }}
                         </a>
                     </div>
                     {{-- route()はroutesフォルダのweb.phpのnameの引数を入れることで、

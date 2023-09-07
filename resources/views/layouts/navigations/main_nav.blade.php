@@ -4,6 +4,7 @@
         {{-- 右側のリンクとかチェックボックス --}}
         @if(Auth::check())
         <div class="Itempagelinks">
+            <a href="{{ route('home') }}" >{{ 'Home' }}</a>
             <a href="{{ route('index_items.view') }}" >商品一覧</a>
             <a href="{{ route('register_items.view') }}" >商品登録</a>
         </div>
@@ -11,13 +12,13 @@
         <div class="users_selectbox">
                 <select class="form-select rounded-md" aria-label="Default select example" name = Auth::user()->name id="members_name" >
                     @if(Auth::check())
-                    <option value = {{ Auth::user()->name }}>{{ Auth::user()->name }}</option>
+                        <option value = {{ Auth::user()->name }}>{{ Auth::user()->name }}</option>
                     @else
-                    <option selected>登録したユーザー</option>
+                    <option selected>登録したユーザー名</option>
                     @auth
-                        @foreach ( $auth_users as $auth_user)
+                    @foreach ( $auth_users as $auth_user)
                         <option value= {{ $auth_user -> id }}>{{ $auth_user -> name }}</option>
-                        @endforeach
+                    @endforeach
                     @endauth
                     @endif
                     {{-- なお、GPT大先生によると、@if(Auth::check())と@authは微妙にちがいがあり、
