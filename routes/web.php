@@ -44,9 +44,6 @@ Route::get('/register/view',[AuthController::class,'showUserRegisterPage'])->nam
 //会員ですらない人が会員登録画面で一般会員「」登録をできるようにするルート（不具合がない場合、roleが0となるため）
 Route::post('/registered_users/members', [UsersController::class, 'store'])->name('members');
 
-//会員ですらない人も一度ログアウトした一般会員もログインすれば再度ダッシュボード表示できるするルート設定（前者の人を考慮し、外に除外）
-Route::get('/dashboard', [HomeController::class,'showDashboard'])->middleware(['auth', 'verified'])->name('dashboard');
-
 //ログインしている状態に許されるルート設定ぽい
 // Route::middleware('auth')->group(function () {
 
@@ -57,6 +54,10 @@ require __DIR__.'/auth.php';
 //一般ユーザー（会員登録をした（＝データベースにユーザーデータが登録されている）人）
 Route::group(['middleware' => ['auth', 'can:user-higher']], function () {
     //ここにルート記述
+
+//会員ですらない人も一度ログアウトした一般会員もログインすれば再度ダッシュボード表示できるするルート設定（前者の人を考慮し、外に除外）
+Route::get('/dashboard', [HomeController::class,'showDashboard'])->middleware(['auth', 'verified'])->name('dashboard');
+
     //（一般）会員登録をした人が商品一覧画面を表示できるようにするためのルート設定
     Route::get('/index/view',[ItemsController::class,'index'])->name('index_items.view');
 
