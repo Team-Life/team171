@@ -31,10 +31,11 @@ class ItemsController extends Controller
 
     public function index()
     {
+        $choices = Categories::all();
         $auth_users = Users::all();//Usersテーブルの情報をデータベースのusersテーブルから全て取得
         $items = Items::all();
         $login_user = Auth::user();//ログインユーザー情報を取得
-        return view('index_items',compact('auth_users','items','login_user'));
+        return view('index_items',compact('auth_users','items','login_user','choices'));
         //表示したいblade.phpファイルがresourcesのviewsから見て何らかのフォルダに入っている場合、
         // 上記のように.でつなげる。上ならviewsの中のauthフォルダの中のlogin.blade.phpを表示
     }
