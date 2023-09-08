@@ -12,6 +12,7 @@ use App\Models\Items;
 use Illuminate\Support\Facades\Auth;//ログインユーザーに関する情報をAuth::～を使えるようにするuse宣言
 use App\Models\Users;//<--User情報をデータベースのusersテーブルから持ってくるために書く宣言
 use Illuminate\Http\RedirectResponse as HttpRedirectResponse;
+use App\Http\Controllers\item;
 
 class ItemsController extends Controller
 {
@@ -32,7 +33,7 @@ class ItemsController extends Controller
     public function index()
     {
         $auth_users = Users::all();//Usersテーブルの情報をデータベースのusersテーブルから全て取得
-        $items = Items::all();
+        $items = Items::all();//全件取得
         $login_user = Auth::user();//ログインユーザー情報を取得
         return view('index_items',compact('auth_users','items','login_user'));
         //表示したいblade.phpファイルがresourcesのviewsから見て何らかのフォルダに入っている場合、
@@ -97,6 +98,18 @@ class ItemsController extends Controller
         return view('layouts.items_info_edit.edit', [
             'inputIteminfo' => $request,
         ],compact('auth_users','login_user','registered_item_informations'));
+    }
+    /**
+     * 商品一覧からの削除処理
+     */
+    public function itemdestroy($id)
+    {
+        // テーブルから指定のIDのレコード1件を取得
+        $item = item::find($id);
+        // レコードを削除
+        $item->delete();
+        // 削除したら一覧画面にリダイレクト
+        return redirect()->route('item.destroy');
     }
 
     /**

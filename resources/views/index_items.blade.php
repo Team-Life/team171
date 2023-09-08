@@ -7,7 +7,36 @@
 
     <div class="index-items-outerwrap">
         <div class="index-items-innerwrap mx-auto sm:px-6 lg:px-8">
-            あああああ
+        <table class="table">
+<thead>
+    <table class="table table-striped">
+        <tr>
+        <th scope="col">ID</th>
+        <th scope="col">名前</th>
+        <th scope="col">カテゴリ</th>
+        <th scope="col">詳細</th>
+        <th scope="col"></th>
+        </tr>
+</thead>
+@foreach( $items as $item )
+<tbody>
+        <tr>
+        <th scope="row">{{ $item->id }}</th>
+        <td>{{ $item->name }}</td>
+        <td>{{ $item->type }}</td>
+        <td>{{ $item->detail }}</td>
+        <td>
+        <form action="{{ route('item.destroy', ['id' => $item->id]) }}" method="POST"> <!--itemテーブルのidカラムを取り出す-->
+            @csrf <!--これがないとPOSTできない-->
+            <button type="button" class="btn btn-outline-primary">削除</button>
+            <input type="hidden" class="" name="item_id" value="{{ $item->id }}">
+        </form>
+        </td>
+        </tr>
+    </table>
+</tbody>
+@endforeach
+</table>
         </div>
     </div>
 </x-app-layout>
