@@ -39,9 +39,17 @@
                     x-data="{ show: true }"
                     x-show="show"
                     x-transition
-                    x-init="setTimeout(() => show = false, 2000)"
+                    x-init="setTimeout(() => show = false, 4000)"
                     class="text-sm text-gray-600"
-                >{{ __('Saved.') }}</p>
+                >変更を受け付けました</p>
+            @else
+                <p
+                x-data="{ show: true }"
+                x-show="show"
+                x-transition
+                x-init="setTimeout(() => show = false, 4000)"
+                class="text-sm text-gray-600"
+                >既に使われているアドレスを用いることはできません</p>
             @endif
         </div>
     </form>

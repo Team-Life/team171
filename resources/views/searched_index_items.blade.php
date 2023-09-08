@@ -7,13 +7,6 @@
 
     <div class="index-items-outerwrap">
         <div class="index-items-innerwrap mx-auto sm:px-6 lg:px-8">
-            <div class="search_box">
-                <form class="search_form" method="post" action="{{ route('searched.items.index') }}" enctype="multipart/form-data">
-                    @csrf
-                    <input type="text" name="searchTerm" placeholder="検索キーワードを入力">
-                    <button type="submit">検索</button>
-                </form>
-            </div>
             <table class="table table-striped table-hover">
                 <thead>
                         <tr>
@@ -25,18 +18,19 @@
                         </tr>
                 </thead>
                 <tbody>
-                    @foreach( $items as $item )
+                    @foreach( $search_results as $search_result )
                     <tr>
-                    <th scope="row">{{ $item->id }}</th>
-                    <td>{{ $item->name }}</td>
-                    <td>{{ $item->type }}</td>
-                    <td>{{ $item->detail }}</td>
+                    <th scope="row">{{ $search_result->id }}</th>
+                    <td>{{ $search_result->name }}</td>
+                    <td>{{ $search_result->type }}</td>
+                    <td>{{ $search_result->detail }}</td>
                     <td>
-                        <form action="{{ route('item.destroy', ['id' => $item->id]) }}" method="POST"><!-- itemテーブルのidカラムを取り出す -->
+                        <form action="{{ route('item.destroy', ['id' => $search_result->id]) }}" method="post">
+                                        {{-- itemsテーブルのidカラムを取り出す --> --}}
                         @csrf   {{-- ←の@csrfがないとPOSTできない --}}
                         @method('DELETE')
-                            <button type="submit" id="delete-item_id-{{ $item->id }}" class="btn btn-outline-primary">削除</button>
-                            <input type="hidden" class="" name="item_id" value="{{ $item->id }}">
+                            <button type="submit" id="delete-item_id-{{ $search_result->id }}" class="btn btn-outline-primary">削除</button>
+                            <input type="hidden" class="" name="item_id" value="{{ $search_result->id }}">
                         </form>
                     </td>
                     </tr>

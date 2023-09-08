@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthenticatedSessionController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UsersController;
 
 /*
@@ -68,6 +69,8 @@ Route::group(['middleware' => ['auth', 'can:user-higher']], function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+
+    Route::post('/search', [SearchController::class,'SearchAndIndex'])->name('searched.items.index');
 });
 
 //管理者以上

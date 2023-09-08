@@ -70,6 +70,7 @@ class ItemsController extends Controller
             'name' => $validated['name'],
             'type' => $validated['type'],
             'detail' => $validated['detail'],
+            'updated_by' => $login_user->id,
             //idとtimestampsは自動でなんとかしてくれるぽい
         ];
 
@@ -105,7 +106,7 @@ class ItemsController extends Controller
      * @return Response
      */
     public function itemdestroy(Request $request, $id)
-    { 
+    {
         // テーブルから指定のIDのレコード1件を取得
         $item = Items::find($id);
         if (!$item) {

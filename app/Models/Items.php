@@ -25,7 +25,8 @@ class Items extends Model
         'name',
         'type',
         'detail',
-        'status'
+        'status',
+        'updated_by'
     ];
     //fillableで設定した値以外は、Laravelでは一括保存・更新処理から除外するようになっている。
     //ここにnullableをつけていないやつやtimestampsみたいな自動で勝手に入るやつ以外を除いて勝手に

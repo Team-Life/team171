@@ -8,7 +8,7 @@
 .navcontents {
     height: 100%;
     width: 100%;
-    text-align: center;
+    text-align: left;
     display: flex;
     justify-content: space-evenly;
     padding-bottom: 1rem;
@@ -21,7 +21,7 @@
     top: 0.6rem;
     left: 0;
     width: 30%;
-    padding: 0.4rem 0 0 0;
+    padding: 0.4rem 0 0 2rem;
     font-size: 1.5rem;
     margin: auto 0;
 }
@@ -29,7 +29,7 @@
 .Itempagelinks {
     position: absolute;
     top: 0;
-    right: 18rem;
+    left: 14rem;
     margin: auto 0;
     padding: 0;
 }
@@ -48,9 +48,9 @@
 
 .users_selectbox{
     position: absolute;
-    top: 0;
+    top: 0.2rem;
     right: 3rem;
-    width: 10rem;
+    width: 11rem;
     margin: 0.5rem 0 1rem 0;
     padding: 0;
     border-radius: 0.375rem;
@@ -59,7 +59,7 @@
 .profile_logout_links{
     position: absolute;
     top: 1rem;
-    right: 37rem;
+    right: 15rem;
     padding:auto 1rem;
     margin: auto 0;
     display: flex;
@@ -91,7 +91,7 @@
 
 .homenavcontents h2 {
     position: absolute;
-    top: 0.5rem;
+    top: 0.7rem;
     left: -6rem;
     width: 30%;
     padding: 0.4rem 0 0 0;
