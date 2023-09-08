@@ -25,7 +25,7 @@ class Items extends Model
         'name',
         'type',
         'detail',
-        'deleted_at',
+        'status',
         'updated_by',
         'updated_at'
     ];

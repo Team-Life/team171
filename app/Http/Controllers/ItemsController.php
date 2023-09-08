@@ -104,7 +104,7 @@ class ItemsController extends Controller
      */
     public function update(Request $request)
 {
-    if ($request->isDirty('name') || $request->isDirty('type') || $request->isDirty('detail')||$request->isDirty('deleted_at')) {
+    if ($request->isDirty('name') || $request->isDirty('type') || $request->isDirty('detail')||$request->isDirty('status')) {
         // モデルの更新時に updated_at タイムスタンプは自動的に更新されるため、ここでは設定不要
     }
 
