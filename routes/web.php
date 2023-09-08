@@ -83,7 +83,8 @@ Route::group(['middleware' => ['auth', 'can:admin-higher']], function() {
     Route::patch('/items/information/edit/update', [ItemsController::class, 'update'])->name('items.info.update');
 
     // 商品一覧からの削除
-    Route::post('item/destroy/{id}', [App\Http\Controllers\ItemController::class, 'itemdestroy'])->name('item.destroy');
+    Route::delete('items/destroy/{id}', [App\Http\Controllers\ItemsController::class, 'itemdestroy'])->name('item.destroy');
+
 });
 // この管理者以上は、ProvidersのAuthServiceProvider.phpに書かれた条件式に従う
 

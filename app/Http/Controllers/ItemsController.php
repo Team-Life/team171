@@ -12,7 +12,6 @@ use App\Models\Items;
 use Illuminate\Support\Facades\Auth;//ログインユーザーに関する情報をAuth::～を使えるようにするuse宣言
 use App\Models\Users;//<--User情報をデータベースのusersテーブルから持ってくるために書く宣言
 use Illuminate\Http\RedirectResponse as HttpRedirectResponse;
-use App\Http\Controllers\item;
 
 class ItemsController extends Controller
 {
@@ -101,15 +100,22 @@ class ItemsController extends Controller
     }
     /**
      * 商品一覧からの削除処理
+     * @param Request $request
+     * @param Items $item_id
+     * @return Response
      */
-    public function itemdestroy($id)
-    {
+    public function itemdestroy(Request $request, $id)
+    { 
         // テーブルから指定のIDのレコード1件を取得
-        $item = item::find($id);
+        $item = Items::find($id);
+        if (!$item) {
+            // アイテムが存在しない場合の処理（エラー処理など）
+            return redirect()->route('index_items.view'); // 一覧ページにリダイレクト
+        }
         // レコードを削除
         $item->delete();
         // 削除したら一覧画面にリダイレクト
-        return redirect()->route('item.destroy');
+        return redirect()->route('index_items.view');
     }
 
     /**

@@ -18,24 +18,25 @@
         <th scope="col"></th>
         </tr>
 </thead>
-@foreach( $items as $item )
 <tbody>
+@foreach( $items as $item )
         <tr>
         <th scope="row">{{ $item->id }}</th>
         <td>{{ $item->name }}</td>
         <td>{{ $item->type }}</td>
         <td>{{ $item->detail }}</td>
         <td>
-        <form action="{{ route('item.destroy', ['id' => $item->id]) }}" method="POST"> <!--itemテーブルのidカラムを取り出す-->
-            @csrf <!--これがないとPOSTできない-->
-            <button type="button" class="btn btn-outline-primary">削除</button>
-            <input type="hidden" class="" name="item_id" value="{{ $item->id }}">
-        </form>
+            <form action="{{ route('item.destroy', ['id' => $item->id]) }}" method="POST"><!-- itemテーブルのidカラムを取り出す -->
+                @csrf <!--これがないとPOSTできない-->
+                @method('DELETE')
+                <button type="submit" id="delete-item_id-{{ $item->id }}" class="btn btn-outline-primary">削除</button>
+                <input type="hidden" class="" name="item_id" value="{{ $item->id }}">
+            </form>
         </td>
         </tr>
+        @endforeach
     </table>
 </tbody>
-@endforeach
 </table>
         </div>
     </div>
