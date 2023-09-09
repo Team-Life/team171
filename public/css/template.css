@@ -56,3 +56,13 @@
     background-color: white;
     opacity: 0.9;
 }
+
+/* custom_errors_message.blade.php用のCSS */
+.message_statement{
+    text-align: center;
+    margin: 10rem auto;
+    padding: auto;
+    color: red;
+    font-weight: bolder;
+    font-size: 2rem;
+}

@@ -4,6 +4,8 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use Illuminate\Auth\Access\AuthorizationException;
+
 
 class Handler extends ExceptionHandler
 {
@@ -26,5 +28,21 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+
+
+    }
+
+    //カスタムエラーメッセージを設定しているfunction、下のauthはLangフォルダのjaフォルダのauthです
+    public function render($request, Throwable $exception)
+    {
+        if ($exception instanceof AuthorizationException) {
+            // カスタムエラーメッセージを取得
+            $message = __('auth.403');
+
+            // カスタムエラーメッセージをビューに渡して表示
+            return response(view('custom_errors_message', ['message' => $message]));
+        }
+
+        return parent::render($request, $exception);
     }
 }

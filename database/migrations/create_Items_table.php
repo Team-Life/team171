@@ -18,7 +18,7 @@ return new class extends Migration
             $table->smallInteger('type')->nullable()->comment('種別');
             // nullable()は厳密には、「デフォルト値をNULLにし、」NULLを受け入れるカラムを定義する
             $table->string('detail',500)->nullable()->comment('詳細');
-            $table->boolean('status')->default(0)->comment('0なら表示、1なら論理削除'); // カスタムの削除フラグ、論理削除で利用
+            $table->boolean('item_status')->default(0)->comment('0なら表示、1なら論理削除'); // カスタムの削除フラグ、論理削除で利用
             $table->integer('updated_by')->default(fake()->numberBetween($min=1,$max=10))->comment('情報更新者（ログイン中管理者）のユーザーid');
             $table->timestamp('created_at')->nullable()->comment('登録日時');
             $table->timestamp('updated_at')->nullable()->comment('更新日時');

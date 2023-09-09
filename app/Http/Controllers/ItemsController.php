@@ -32,7 +32,14 @@ class ItemsController extends Controller
     public function index()
     {
         $auth_users = Users::all();//Usersテーブルの情報をデータベースのusersテーブルから全て取得
-        $items = Items::all();//全件取得
+        $items = Items::where('item_status', 0)->get();
+        //なんかデータベースからデータを取り出す方法はall()や上記以外にもめっちゃあるらしいです
+        // おおきくSQLクエリビルダとEloquent ORMに分かれる。上やall()は後者
+        //::where('条件をつける対応するマイグレーションファイルに対応するテーブルのカラム','条件')->get();
+        //itemsテーブルのitem_statusカラムが0のレコード（行）のデータのみを全て取り出す。
+        // たぶん、これが論理「削除」（＝データベースからデータを取り出す時点でソートすること？）
+
+
         $login_user = Auth::user();//ログインユーザー情報を取得
         return view('index_items',compact('auth_users','items','login_user'));
         //表示したいblade.phpファイルがresourcesのviewsから見て何らかのフォルダに入っている場合、
@@ -58,7 +65,7 @@ class ItemsController extends Controller
         $validated = $request->validate([
             'name' => 'required',//バリデーション、requiredは必須入力
             'type' => 'required',
-            'detail' => 'required|max:300'
+            'detail' => 'required|max:400'
             ]);
 
         //ログインユーザーの情報を取得
@@ -124,7 +131,7 @@ class ItemsController extends Controller
      */
     public function update(Request $request)
 {
-    if ($request->isDirty('name') || $request->isDirty('type') || $request->isDirty('detail')||$request->isDirty('status')) {
+    if ($request->isDirty('name') || $request->isDirty('type') || $request->isDirty('detail')||$request->isDirty('item_status')) {
         // モデルの更新時に updated_at タイムスタンプは自動的に更新されるため、ここでは設定不要
     }
 

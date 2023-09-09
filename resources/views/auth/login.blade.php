@@ -15,10 +15,14 @@
                 <p>
                     Email Address
                 </p>
+                <div class="relative">
                 <p>
                     <x-text-input id="email" class="email_input block mt-1" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+                </p>
+                <p>
                     <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </p>
+                </div>
             </div>
         </div>
 

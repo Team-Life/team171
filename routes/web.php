@@ -6,6 +6,7 @@ use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthenticatedSessionController;
+use App\Http\Controllers\ErrorMessageController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UsersController;
@@ -49,6 +50,10 @@ Route::post('/registered_users/members', [UsersController::class, 'store'])->nam
 // Route::middleware('auth')->group(function () {
 
 // });
+
+//エラー画面を表示
+// Route::get('/error/message',[ErrorMessageController::class,'render'])->name('custom_errors_message');
+
 
 require __DIR__.'/auth.php';
 

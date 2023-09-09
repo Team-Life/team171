@@ -21,8 +21,17 @@ class CategorySeeder extends Seeder
             //idのカラムは要らない
     ]);
 
-    \App\Models\Categories::create([
+        \App\Models\Categories::create([
             'type' => '2',
+            'category_name' => '事務用品',//一定の物を入れたい場合は右の値を指定された物に直して
+            'created_at' => now(),//php artisan db:seed --class=CategorySeeder（<--今回のseeder名）をひたすら繰り返す
+            'updated_at' => now(),//現在の時刻を入れるメソッド
+            //なお、対応するmigrationファイルにtimestamps()のカラムがないとエラーになる
+            //idのカラムは要らない
+    ]);
+
+    \App\Models\Categories::create([
+            'type' => '3',
             'category_name' => '食料品',//一定の物を入れたい場合は右の値を指定された物に直して
             'created_at' => now(),//php artisan db:seed --class=CategorySeeder（<--今回のseeder名）をひたすら繰り返す
             'updated_at' => now(),//現在の時刻を入れるメソッド
@@ -31,7 +40,7 @@ class CategorySeeder extends Seeder
     ]);
 
         \App\Models\Categories::create([
-            'type' => '3',
+            'type' => '4',
             'category_name' => '医療品',//一定の物を入れたい場合は右の値を指定された物に直して
             'created_at' => now(),//php artisan db:seed --class=CategorySeeder（<--今回のseeder名）をひたすら繰り返す
             'updated_at' => now(),//現在の時刻を入れるメソッド
@@ -40,7 +49,7 @@ class CategorySeeder extends Seeder
     ]);
 
     \App\Models\Categories::create([
-            'type' => '4',
+            'type' => '5',
             'category_name' => '家電用品',//一定の物を入れたい場合は右の値を指定された物に直して
             'created_at' => now(),//php artisan db:seed --class=CategorySeeder（<--今回のseeder名）をひたすら繰り返す
             'updated_at' => now(),//現在の時刻を入れるメソッド
@@ -49,8 +58,8 @@ class CategorySeeder extends Seeder
     ]);
 
     \App\Models\Categories::create([
-        'type' => '5',
-        'category_name' => '本',//一定の物を入れたい場合は右の値を指定された物に直して
+        'type' => '6',
+        'category_name' => '本、マンガ',//一定の物を入れたい場合は右の値を指定された物に直して
         'created_at' => now(),//php artisan db:seed --class=CategorySeeder（<--今回のseeder名）をひたすら繰り返す
         'updated_at' => now(),//現在の時刻を入れるメソッド
         //なお、対応するmigrationファイルにtimestamps()のカラムがないとエラーになる
@@ -58,7 +67,7 @@ class CategorySeeder extends Seeder
     ]);
 
     \App\Models\Categories::create([
-        'type' => '6',
+        'type' => '7',
         'category_name' => '嗜好品',//一定の物を入れたい場合は右の値を指定された物に直して
         'created_at' => now(),//php artisan db:seed --class=CategorySeeder（<--今回のseeder名）をひたすら繰り返す
         'updated_at' => now(),//現在の時刻を入れるメソッド
@@ -67,7 +76,7 @@ class CategorySeeder extends Seeder
     ]);
 
     \App\Models\Categories::create([
-    'type' => '7',
+    'type' => '8',
     'category_name' => '乗り物',//一定の物を入れたい場合は右の値を指定された物に直して
     'created_at' => now(),//php artisan db:seed --class=CategorySeeder（<--今回のseeder名）をひたすら繰り返す
     'updated_at' => now(),//現在の時刻を入れるメソッド
@@ -76,7 +85,7 @@ class CategorySeeder extends Seeder
     ]);
 
     \App\Models\Categories::create([
-    'type' => '8',
+    'type' => '9',
     'category_name' => 'その他',//一定の物を入れたい場合は右の値を指定された物に直して
     'created_at' => now(),//php artisan db:seed --class=CategorySeeder（<--今回のseeder名）をひたすら繰り返す
     'updated_at' => now(),//現在の時刻を入れるメソッド

@@ -11,7 +11,9 @@
                 <form class="search_form" method="post" action="{{ route('searched.items.index') }}" enctype="multipart/form-data">
                     @csrf
                     <input type="text" name="searchTerm" placeholder="検索キーワードを入力">
-                    <button type="submit">検索</button>
+                    <x-primary-button style="padding: 0.5rem;">
+                        検索
+                    </x-primary-button>
                 </form>
             </div>
             <table class="table table-striped table-hover">
