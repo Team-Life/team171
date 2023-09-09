@@ -8,9 +8,7 @@
     <div class="index-items-outerwrap">
         <div class="index-items-innerwrap mx-auto sm:px-6 lg:px-8">
             <div class="search_count container" >
-                <p>検索されたキーワードを含む商品は、<br>
-                    全部で <strong>{{ $count_search_results }}</strong>件です。
-                </p>
+                <p>検索されたキーワードを含む商品は、全部で <strong>{{ $count_search_results }}</strong>件です。</p>
             </div>
             <table class="table table-striped table-hover">
                 <thead>

@@ -109,34 +109,38 @@ class ItemsController extends Controller
         /**
      * 商品詳細・編集画面の表示（ProfileControllerを真似して、なんとなく作成）
      */
-    public function editorview(Request $request)
+    public function editorview(Items $information)
     {
         $auth_users = Users::all();//Usersテーブルの情報をデータベースのusersテーブルから全て取得
         $login_user = Auth::user();//ログインユーザー情報を取得
         $registered_item_informations = Items::all();
-        return view('items_info_edit.edit', [
-            'inputIteminfo' => $request,//入力された値をinputIteminfoという名前でそのblade.phpにファイルを渡す
-            //同様にblade.phpでは{{ $～ }}で記述
-        ],compact('auth_users','login_user','registered_item_informations'));
+        return view('ItemsInfoEdit.edit',compact('auth_users','login_user','registered_item_informations','information'));
     }
 
         /**
      * 商品詳細・編集画面で商品内容の編集（ProfileControllerを真似して、なんとなく作成）
      */
-        public function update(Request $request)
+    public function update(Request $request, Items $information)
     {
-        if ($request->isDirty('name') || $request->isDirty('type') || $request->isDirty('detail')||$request->isDirty('delete_flag')) {
-            // モデルの更新時に updated_at タイムスタンプは自動的に更新されるらしいため、ここでは設定不要
-        }
 
-        // モデルの更新処理を実行するコードを追加
-        $request->save();
-        // リダイレクトなどの適切なレスポンスを返す
-        return Redirect::route('items.editor.view')->with('status','items-updated');
+        // 更新データの連想配列を作成
+        $validated = $request->validate([
+            'name' => $request->input('edited_name'),
+            'type' => $request->input('edited_type'),
+            'detail' => $request->input('edited_detail'),
+            'delete_flag' => $request->input('edited_delete_flag'),
+        ]);
+
+        $validated['updated_by'] = auth()->id(); // ログインユーザーidを取得する
+        $validated['updated_at'] = now();
+
+        // モデルを取得し、条件に一致するレコードを更新
+        // ここでは、例として id カラムが $request->input('id') に一致するレコードを更新すると仮定しています。
+        $information->update($validated);
+
+        $request->session();
+        return back();
+
     }
-    // 具体的には、$request->isDirty('type')は、現在のリクエストで送信されたデータと、元のデータ
-    // （通常、データベースから読み込まれたデータ）とを比較するものらしく
-    // そして、指定した属性（'type'）がリクエストデータと元のデータで異なる場合に true を返し、
-    // 同じ場合には false を返す　※isDirtyメソッド
 
 }
