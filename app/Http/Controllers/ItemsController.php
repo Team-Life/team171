@@ -14,21 +14,8 @@ use App\Models\Users;//<--User情報をデータベースのusersテーブルか
 use Illuminate\Http\RedirectResponse as HttpRedirectResponse;
 
 class ItemsController extends Controller
-{
-
-    public function ShowItemsRegisterScreen()
-    {
-        $choices = Categories::all();
-        $auth_users = Users::all();//Usersテーブルの情報をデータベースのusersテーブルから全て取得
-        $items = Items::all();
-        $login_user = Auth::user();//ログインユーザー情報を取得
-        /**
-         * Categoryモデルと紐付いた、Categoryテーブルからデータを全て取得
-         *なぜか、ここでは::with('categories')->get();は使えない
-         * **/
-        return view('register_items',compact('choices','auth_users','items','login_user'));
-    }
-
+{//-------------------index_items.blade.phpに関する関数-----------------------------------
+//検索機能はSearchControllerに記述
     public function index()
     {
         $auth_users = Users::all();//Usersテーブルの情報をデータベースのusersテーブルから全て取得
@@ -47,15 +34,45 @@ class ItemsController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * 商品一覧からの削除処理
+     * @param Request $request
+     * @param Items $item_id
+     * @return Response
      */
-    public function create()
+    public function itemdestroy(Request $request, $id)
     {
-        //
+        // テーブルから指定のIDのレコード1件を取得
+        $item = Items::find($id);
+        if (!$item) {
+            // アイテムが存在しない場合の処理（エラー処理など）
+            return redirect()->route('index_items.view'); // 一覧ページにリダイレクト
+        }
+        // レコードを削除
+        $item->delete();
+        // 削除したら一覧画面にリダイレクト
+        return redirect()->route('index_items.view');
+    }
+// ---------------------------- register_items.blade.php に関する関数-------------------------
+
+    /**
+     *商品登録画面の表示
+     * **/
+
+    public function ShowItemsRegisterScreen()
+    {
+        $choices = Categories::all();
+        $auth_users = Users::all();//Usersテーブルの情報をデータベースのusersテーブルから全て取得
+        $items = Items::all();
+        $login_user = Auth::user();//ログインユーザー情報を取得
+        /**
+         * Categoryモデルと紐付いた、Categoryテーブルからデータを全て取得
+         *なぜか、ここでは::with('categories')->get();は使えない
+         * **/
+        return view('register_items',compact('choices','auth_users','items','login_user'));
     }
 
     /**
-     * Store a newly created resource in storage.
+     * 商品のデータベースへの登録機能の関数
      */
     public function store(Request $request)
     {
@@ -86,70 +103,40 @@ class ItemsController extends Controller
         return back();/**->with('message','無事送信されました。')**/
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+    //データベースからの削除は上の::where('items_status',0)で論理削除
+// ---------------------------layoutsフォルダのitems_info_editフォルダ--------------------------------------
 
-    /**
-     * Show the form for editing the specified resource.
+        /**
+     * 商品詳細・編集画面の表示（ProfileControllerを真似して、なんとなく作成）
      */
-    public function editorview(Request $request): View
+    public function editorview(Request $request)
     {
         $auth_users = Users::all();//Usersテーブルの情報をデータベースのusersテーブルから全て取得
         $login_user = Auth::user();//ログインユーザー情報を取得
         $registered_item_informations = Items::all();
-        return view('layouts.items_info_edit.edit', [
-            'inputIteminfo' => $request,
+        return view('items_info_edit.edit', [
+            'inputIteminfo' => $request,//入力された値をinputIteminfoという名前でそのblade.phpにファイルを渡す
+            //同様にblade.phpでは{{ $～ }}で記述
         ],compact('auth_users','login_user','registered_item_informations'));
     }
-    /**
-     * 商品一覧からの削除処理
-     * @param Request $request
-     * @param Items $item_id
-     * @return Response
+
+        /**
+     * 商品詳細・編集画面で商品内容の編集（ProfileControllerを真似して、なんとなく作成）
      */
-    public function itemdestroy(Request $request, $id)
+        public function update(Request $request)
     {
-        // テーブルから指定のIDのレコード1件を取得
-        $item = Items::find($id);
-        if (!$item) {
-            // アイテムが存在しない場合の処理（エラー処理など）
-            return redirect()->route('index_items.view'); // 一覧ページにリダイレクト
+        if ($request->isDirty('name') || $request->isDirty('type') || $request->isDirty('detail')||$request->isDirty('delete_flag')) {
+            // モデルの更新時に updated_at タイムスタンプは自動的に更新されるらしいため、ここでは設定不要
         }
-        // レコードを削除
-        $item->delete();
-        // 削除したら一覧画面にリダイレクト
-        return redirect()->route('index_items.view');
-    }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request)
-{
-    if ($request->isDirty('name') || $request->isDirty('type') || $request->isDirty('detail')||$request->isDirty('delete_flag')) {
-        // モデルの更新時に updated_at タイムスタンプは自動的に更新されるため、ここでは設定不要
+        // モデルの更新処理を実行するコードを追加
+        $request->save();
+        // リダイレクトなどの適切なレスポンスを返す
+        return Redirect::route('items.editor.view')->with('status','items-updated');
     }
-
-    // モデルの更新処理を実行するコードを追加
-    $request->save();
-    // リダイレクトなどの適切なレスポンスを返す
-    return Redirect::route('items.editor.view')->with('status','items-updated');
-}
     // 具体的には、$request->isDirty('type')は、現在のリクエストで送信されたデータと、元のデータ
-    // （通常、データベースから読み込まれたデータ）とを比較します。
+    // （通常、データベースから読み込まれたデータ）とを比較するものらしく
     // そして、指定した属性（'type'）がリクエストデータと元のデータで異なる場合に true を返し、
-    // 同じ場合には false を返します。
+    // 同じ場合には false を返す　※isDirtyメソッド
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
 }

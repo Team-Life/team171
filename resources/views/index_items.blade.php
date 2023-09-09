@@ -11,6 +11,8 @@
                 <form class="search_form" method="post" action="{{ route('searched.items.index') }}" enctype="multipart/form-data">
                     @csrf
                     <input type="text" name="searchTerm" placeholder="検索キーワードを入力">
+                    //ここでname="searchTerm"となっているので、ここで入力した値がinput('searchTerm')が定義された値がpostされて、actionのSearchControllerに
+                    //とんでいると思われる
                     <x-primary-button style="padding: 0.5rem;">
                         検索
                     </x-primary-button>
