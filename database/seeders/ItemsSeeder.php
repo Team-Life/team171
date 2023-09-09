@@ -30,7 +30,7 @@ class ItemsSeeder extends Seeder
             'name' => '地球破壊爆弾',//左のように文字列もmigrationファイルの条件を満たせば日本語も可能（シングルクォーテーションではさむ）
             'type' => fake()->numberBetween($min=1,$max=8),
             'detail' =>'某猫型ロボットがネズミにどら焼きをたべられそうになった時に使用しかけた地球を破壊する力をもつ未来の爆弾',
-            'item_status' =>fake()->numberBetween($min=0,$max=1),
+            'item_status' => 1,
             'updated_by' => fake()->numberBetween($min=1,$max=10),
             'created_at' => now(),//php artisan db:seed --class=ItemsSeeder（<--今回のseeder名）をひたすら繰り返す
             'updated_at' => now(),//現在の時刻を入れるメソッド
