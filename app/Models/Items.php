@@ -25,7 +25,7 @@ class Items extends Model
         'name',
         'type',
         'detail',
-        'item_status',
+        'delete_flag',
         'updated_by'
     ];
     //fillableで設定した値以外は、Laravelでは一括保存・更新処理から除外するようになっている。

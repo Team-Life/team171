@@ -32,11 +32,11 @@ class ItemsController extends Controller
     public function index()
     {
         $auth_users = Users::all();//Usersテーブルの情報をデータベースのusersテーブルから全て取得
-        $items = Items::where('item_status', 0)->get();
+        $items = Items::where('delete_flag', 0)->get();
         //なんかデータベースからデータを取り出す方法はall()や上記以外にもめっちゃあるらしいです
         // おおきくSQLクエリビルダとEloquent ORMに分かれる。上やall()は後者
         //::where('条件をつける対応するマイグレーションファイルに対応するテーブルのカラム','条件')->get();
-        //itemsテーブルのitem_statusカラムが0のレコード（行）のデータのみを全て取り出す。
+        //itemsテーブルのdelete_flagカラムが0のレコード（行）のデータのみを全て取り出す。
         // たぶん、これが論理「削除」（＝データベースからデータを取り出す時点でソートすること？）
 
 
@@ -131,7 +131,7 @@ class ItemsController extends Controller
      */
     public function update(Request $request)
 {
-    if ($request->isDirty('name') || $request->isDirty('type') || $request->isDirty('detail')||$request->isDirty('item_status')) {
+    if ($request->isDirty('name') || $request->isDirty('type') || $request->isDirty('detail')||$request->isDirty('delete_flag')) {
         // モデルの更新時に updated_at タイムスタンプは自動的に更新されるため、ここでは設定不要
     }
 
