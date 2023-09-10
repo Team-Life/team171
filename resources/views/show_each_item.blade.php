@@ -7,16 +7,8 @@
 
     <div class="index-items-outerwrap">
         <div class="index-items-innerwrap mx-auto sm:px-6 lg:px-8">
-            <div class="search_box">
-                <form class="search_form" method="post" action="{{ route('searched.items.index') }}" enctype="multipart/form-data">
-                    @csrf
-                    <input type="text" name="searchTerm" placeholder="検索キーワードを入力">
-                    {{-- ここでname="searchTerm"となっているので、ここで入力した値がinput('searchTerm')が定義された値がpostされて、actionのSearchControllerに --}}
-                    {{-- とんでいると思われる --}}
-                    <x-primary-button style="padding: 0.5rem;">
-                        検索
-                    </x-primary-button>
-                </form>
+            <div class="each_item_show container" >
+                <p>個別表示</p>
             </div>
             <table class="table table-striped table-hover">
                 <thead>
@@ -29,19 +21,14 @@
                         </tr>
                 </thead>
                 <tbody>
-                    @foreach( $items as $item )
                     <tr>
                     <th scope="row">{{ $item->id }}</th>
-                    <td><a href="{{ route('showeach.item.view', $item) }}" class="showeachlink">
-                        {{-- route(,)の第二引数は{item}というパラメータを「受け取る」設定 --}}
-                        {{-- $itemはforeachのasの後ろとも一致させないとエラーになる --}}
-                        {{ $item->name }}
-                        </a>
-                    </td>
+                    <td>{{ $item->name }}</td>
                     <td>{{ $item->type }}</td>
                     <td>{{ $item->detail }}</td>
                     <td>
-                        <form action="{{ route('item.destroy', ['id' => $item->id]) }}" method="POST"><!-- itemテーブルのidカラムを取り出す -->
+                        <form action="{{ route('item.destroy', ['id' => $item->id]) }}" method="post">
+                                        {{-- itemsテーブルのidカラムを取り出す --> --}}
                         @csrf   {{-- ←の@csrfがないとPOSTできない --}}
                         @method('DELETE')
                             <button type="submit" id="delete-item_id-{{ $item->id }}" class="btn btn-outline-primary">削除</button>
@@ -49,7 +36,6 @@
                         </form>
                     </td>
                     </tr>
-                    @endforeach
                 </tbody>
             </table>
         </div>

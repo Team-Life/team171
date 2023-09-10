@@ -74,8 +74,12 @@ Route::group(['middleware' => ['auth', 'can:user-higher']], function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-
+    //検索結果を表示
     Route::post('/search', [SearchController::class,'SearchAndIndex'])->name('searched.items.index');
+    //itemごとに個別表示
+    Route::get('items/show/{item}',[ItemsController::class,'ShowEachItem2'])->name('showeach.item.view');
+    // Laravelではルート設定にパラメータ（数学と同じで媒介変数？、変わりうる値）を入れる場合、
+    // パラメータ名を波括弧で囲むらしい
 });
 
 //管理者以上

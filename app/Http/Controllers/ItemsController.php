@@ -104,7 +104,32 @@ class ItemsController extends Controller
     }
 
     //データベースからの削除は上の::where('items_status',0)で論理削除
-// ---------------------------layoutsフォルダのitems_info_editフォルダ--------------------------------------
+
+//----------------------------show_each_item.blade.phpに関する関数------------------------------------------------------
+
+    // 個別表示機能追加
+
+    //public function ShowEachItem1(Items $item){
+        // 関数の中の第一引数は、タイプヒント（引数の型を指定するもの  ※モデル名を書いて引数の型を制限
+        // 第二引数の名前は任意でいいが、おそらくRoute設定のパラメータ名と一致させる必要がある）
+        // おそらく、$itemはItemsモデルのインスタンスにあたる。
+        // これを書いた時点で$itemのidをデータベースに受け渡し、
+        //該当の$itemレコードを取得という流れが設定されたことになるらしい（依存注入という）。
+      //return view('show_each_item',compact('eachitem'));
+        //※$itemを渡しているのは、show_each_item.blade.phpであることに注意
+    //}
+
+    // 同じ意味だが、次の書き方の場合、おそらくRoute設定の自由はきく
+    public function ShowEachItem2($id){
+        // idをもとにItemsモデルと紐付いたitemsテーブルから各レコードを取得
+        $item = Items::find($id);
+        return view('show_each_item',compact('item'));
+    }
+
+
+
+
+// ---------------------------ItemsInfoEditフォルダのedit.blade.phpに関する関数--------------------------------------
 
         /**
      * 商品詳細・編集画面の表示（ProfileControllerを真似して、なんとなく作成）
