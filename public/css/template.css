@@ -66,3 +66,9 @@
     font-weight: bolder;
     font-size: 2rem;
 }
+
+/* index_items.blade.phpに関するCSS */
+.showeachlink:hover{
+    text-decoration: underline;
+    color: blue;
+}
