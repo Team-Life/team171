@@ -17,12 +17,13 @@
                     @include('profile.partials.update-password-form')
                 </div>
             </div>
-
+            @if(Auth::user() && Auth::user()->role > 0)
             <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                 <div class="max-w-xl">
                     @include('profile.partials.delete-user-form')
                 </div>
             </div>
+            @endif
         </div>
     </div>
 </x-app-layout>
