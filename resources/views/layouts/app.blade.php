@@ -47,6 +47,7 @@
         <link href="{{ asset('/css/template.css') }}" rel="stylesheet">
         <link href="{{ asset('/css/navigation.css') }}" rel="stylesheet">
         <link href="{{ asset('css/register_view.css') }}" rel="stylesheet" >
+        <link rel="stylesheet" href="{{ asset('css/app_footer.css') }}">
         {{-- <link href="{{ asset('/css/responsive_m.css') }}" rel="stylesheet" media="screen and (max-width: 767px)"> --}}
 
         {{-- BootstrapのCSS bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css --}}
@@ -62,7 +63,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     </head>
-    <body class="font-sans antialiased">
+    <body class="font-sans antialiased relative">
         @if (isset($header))
             {{ $header }}
         @endif

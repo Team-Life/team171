@@ -24,27 +24,28 @@
             <table class="index_table table table-striped table-hover table-bordered">
                 <thead>
                         <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">名前</th>
-                        <th scope="col">カテゴリ</th>
-                        <th scope="col">詳細</th>
-                        <th scope="col"></th>
+                        <th scope="col" class="col_id">ID</th>
+                        <th scope="col" class="col_name">名前</th>
+                        <th scope="col" class="col_category">{{ 'タイプ:カテゴリ' }}</th>
+                        <th scope="col" class="col_detail">詳細</th>
+                        <th scope="col" class="col_button"></th>
                         </tr>
                 </thead>
                 <tbody>
                     @foreach( $items as $item )
                     <tr>
-                    <th scope="row">{{ $item->id }}</th>
-                    <td><a href="{{ route('showeach.item.view', $item) }}" class="showeachlink">
+                    <th scope="row" class="col_id">{{ $item->id }}</th>
+                    <td class="col_name">
+                        <a href="{{ route('showeach.item.view', $item) }}" class="showeachlink">
                         {{-- route(,)の第二引数は{item}というパラメータを「受け取る」設定 --}}
                         {{-- $itemはforeachのasの後ろとも一致させないとエラーになる --}}
                         {{ $item->name }}
                         </a>
                     </td>
-                    <td>{{ $item->type }}</td>
-                    <td>{{ $item->detail }}</td>
-                    <td>
-                        <div class="btn_part flex">
+                    <td class="col_category">{{ $item->type }}</td>
+                    <td class="col_detail">{{ $item->detail }}</td>
+                    <td class="col_button">
+                        <div class="btn_part">
                         <a href="{{ route('items.editor.view',$item->id) }}" class="block">
                             <x-primary-button>
                                 編集
@@ -54,7 +55,7 @@
                         {{-- itemテーブルのidカラムを取り出す --}}
                         @csrf   {{-- ←の@csrfがないとPOSTできない --}}
                         @method('DELETE')
-                            <button type="submit" id="delete-item_id-{{ $item->id }}" class="btn btn-outline-primary">削除</button>
+                            <x-primary-button id="delete-item_id-{{ $item->id }}">削除</x-primary-button>
                             <input type="hidden" class="" name="item_id" value="{{ $item->id }}">
                         </form>
                         </div>

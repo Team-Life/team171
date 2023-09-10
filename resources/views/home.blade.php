@@ -36,6 +36,7 @@
 
         {{-- publicフォルダ内のcssフォルダのhome.cssを参照 --}}
         <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/home_footer.css') }}">
         <link rel="stylesheet" href="{{ asset('css/navigation.css') }}">
 
         {{-- Bootstrapを使うために必要なJavascript --}}
@@ -49,7 +50,7 @@
         </style>
 
     </head>
-    <body class="font-sans antialiased" >
+    <body class="font-sans antialiased relative home_body" >
         @include('layouts.navigations.home_nav')
         <div class="outerwrap" >
                 <div class="start-menu" style="margin-top: 2rem;">

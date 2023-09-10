@@ -21,6 +21,7 @@
         <link href="{{ asset('/css/home.css') }}" rel="stylesheet">
         <link href="{{ asset('/css/template.css') }}" rel="stylesheet">
         <link href="{{ asset('css/navigation.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/guest_footer.css') }}" rel="stylesheet">
         {{-- <link href="{{ asset('/css/responsive_m.css') }}" rel="stylesheet" media="screen and (max-width: 767px)"> --}}
 
         {{-- <style>
@@ -52,7 +53,7 @@
 
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased">
+    <body class="font-sans antialiased relative">
         @if (isset($header))
         {{ $header }}
         @endif

@@ -18,19 +18,19 @@
                         <tr>
                         <th scope="col" class="col_id">ID</th>
                         <th scope="col" class="col_name">名前</th>
-                        <th scope="col" class="col_category">カテゴリ</th>
+                        <th scope="col" class="col_category">{{ 'タイプ:カテゴリ' }} </th>
                         <th scope="col" class="col_detail">詳細</th>
                         <th scope="col" class="col_button"></th>
                         </tr>
                 </thead>
                 <tbody>
                     <tr>
-                    <th scope="row">{{ $item->id }}</th>
-                    <td class="col_id">{{ $item->name }}</td>
-                    <td class="col_name">{{ $item->type }}</td>
-                    <td class="col_category">{{ $item->detail }}</td>
+                    <th scope="row"　class="col_id">{{ $item->id }}</th>
+                    <td class="col_name">{{ $item->name }}</td>
+                    <td class="col_category">{{ $item->type }}</td>
+                    <td class="col_detail">{{ $item->detail }}</td>
                     <td class="col_button">
-                        <div class="btn_part flex">
+                        <div class="btn_part">
                             <a href="{{ route('items.editor.view',$item->id) }}" class="block">
                                 <x-primary-button>
                                     編集
@@ -40,7 +40,7 @@
                                             {{-- itemsテーブルのidカラムを取り出す --> --}}
                             @csrf   {{-- ←の@csrfがないとPOSTできない --}}
                             @method('DELETE')
-                                <button type="submit" id="delete-item_id-{{ $item->id }}" class="btn btn-outline-primary">削除</button>
+                                <x-primary-button id="delete-item_id-{{ $item->id }}">削除</x-primary-button>
                                 <input type="hidden" class="" name="item_id" value="{{ $item->id }}">
                             </form>
                         </div>
