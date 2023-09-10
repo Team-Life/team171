@@ -19,7 +19,7 @@
                         </x-primary-button>
                     </form>
                 </div>
-                @include('layouts.categories_table')
+                @include('layouts.categories_dropdown')
             </div>
             <table class="index_table table table-striped table-hover table-bordered">
                 <thead>

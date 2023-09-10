@@ -11,7 +11,7 @@
                 <div class="each_item_show container" >
                     <p>個別表示</p>
                 </div>
-                @include('layouts.categories_table')
+                @include('layouts.categories_dropdown')
             </div>
             <table class="index_table table table-striped table-hover table-bordered">
                 <thead>

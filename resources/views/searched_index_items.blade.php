@@ -11,7 +11,7 @@
                 <div class="search_count container" >
                     <p>検索されたキーワードを含む商品は、全部で <strong>{{ $count_search_results }}</strong>件です。</p>
                 </div>
-                @include('layouts.categories_table')
+                @include('layouts.categories_dropdown')
             </div>
             <table class="index_table table table-striped table-hover table-bordered">
                 <thead>

@@ -3,7 +3,6 @@
         <p class="reference">　画像やアイコンは以下から引用したものをPhotoshopやIllustratorで加工したものを利用しています。</p><br>
             <ul>
                 <li>・{!! 'unsplash(https://unsplash.com/ja)' !!}</li>
-                <li>・{!! 'Font Awesome(https://fontawesome.com/search?o=r&m=free)' !!}</li>
             </ul>
     </div>
 </footer>

@@ -29,7 +29,7 @@ class ItemsController extends Controller
 
 
         $login_user = Auth::user();//ログインユーザー情報を取得
-        return view('index_items',compact('auth_users','items','login_user','choice'));
+        return view('index_items',compact('auth_users','items','login_user','choices'));
         //表示したいblade.phpファイルがresourcesのviewsから見て何らかのフォルダに入っている場合、
         // 上記のように.でつなげる。上ならviewsの中のauthフォルダの中のlogin.blade.phpを表示
     }
@@ -111,12 +111,13 @@ class ItemsController extends Controller
     // 個別表示機能追加
 
     public function ShowEachItem1(Item $item){
+        $choices = Category::all();
         // 関数の中の第一引数は、タイプヒント（引数の型を指定するもの  ※モデル名を書いて引数の型を制限
         // 第二引数の名前は任意でいいが、おそらくRoute設定のパラメータ名と一致させる必要がある）
         // おそらく、$itemはItemsモデルのインスタンスにあたる。
         // これを書いた時点で$itemのidをデータベースに受け渡し、
         // 該当の$itemレコードを取得という流れが設定されたことになるらしい（依存注入という）。
-        return view('show_each_item',compact('item'));
+        return view('show_each_item',compact('item','choices'));
         // ※$itemを渡しているのは、show_each_item.blade.phpであることに注意
     }
 
@@ -134,10 +135,11 @@ class ItemsController extends Controller
      */
     public function editorview($id)
     {
+        $choices = Category::all();
         $auth_users = Users::all();//Usersテーブルの情報をデータベースのusersテーブルから全て取得
         $login_user = Auth::user();//ログインユーザー情報を取得
         $registered_item_informations = Item::all();
-        return view('ItemsInfoEdit.edit',compact('auth_users','login_user','registered_item_informations'));
+        return view('ItemsInfoEdit.edit',compact('auth_users','login_user','registered_item_informations','choices'));
     }
     // ---------------------------------------------------------------------------------------------------------------------------
     // ここで変数にidを指定しているので、この関数に対する{{ route('items.editor.view',$item->id) }}の「->id」がないとエラーになる
@@ -166,7 +168,7 @@ class ItemsController extends Controller
         // ここでは、例として id カラムが $request->input('id') に一致するレコードを更新すると仮定しています。
         $item->update($validated);//<--updateメソッドで更新
 
-        //なお、更新後は、update
+        //なお、更新後は、updated_atは自動的に更新されるため、上記の関数内にnow()などを記述する必要はない
 
         // $request->session();
         return back()->with('message','商品情報の更新をしました。');

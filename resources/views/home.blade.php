@@ -52,25 +52,6 @@
     <body class="font-sans antialiased" >
         @include('layouts.navigations.home_nav')
         <div class="outerwrap" >
-
-            {{-- @if (Route::has('login'))
-                <div class="global_nav">
-                    @auth
-                        <a href="{{ url('/dashboard') }}" class="go_loginpage font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">login
-                        </a>
-                        <a href="{{ Route('profile.edit') }}" class="edit_btn font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"">
-                        登録情報編集
-                        </a>
-                    @else
-                        <a href="{{ route('login') }}" class="login_btn font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">ログイン</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="register_btn ml-4 font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">新規登録</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif --}}
-
                 <div class="start-menu" style="margin-top: 2rem;">
                     <div class="dashboard-menu">
                         <a href="{{ route('dashboard') }}" >
@@ -89,8 +70,8 @@
                         @endif
                     </div>
                 </div>
-
         </div>
+        @include('layouts.footer')
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous"></script>
