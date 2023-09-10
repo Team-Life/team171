@@ -7,26 +7,29 @@
 
     <div class="index-items-outerwrap">
         <div class="index-items-innerwrap mx-auto sm:px-6 lg:px-8">
-            <div class="each_item_show container" >
-                <p>個別表示</p>
+            <div class="flex">
+                <div class="each_item_show container" >
+                    <p>個別表示</p>
+                </div>
+                @include('layouts.categories_table')
             </div>
-            <table class="table table-striped table-hover">
+            <table class="index_table table table-striped table-hover table-bordered">
                 <thead>
                         <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">名前</th>
-                        <th scope="col">カテゴリ</th>
-                        <th scope="col">詳細</th>
-                        <th scope="col"></th>
+                        <th scope="col" class="col_id">ID</th>
+                        <th scope="col" class="col_name">名前</th>
+                        <th scope="col" class="col_category">カテゴリ</th>
+                        <th scope="col" class="col_detail">詳細</th>
+                        <th scope="col" class="col_button"></th>
                         </tr>
                 </thead>
                 <tbody>
                     <tr>
                     <th scope="row">{{ $item->id }}</th>
-                    <td>{{ $item->name }}</td>
-                    <td>{{ $item->type }}</td>
-                    <td>{{ $item->detail }}</td>
-                    <td>
+                    <td class="col_id">{{ $item->name }}</td>
+                    <td class="col_name">{{ $item->type }}</td>
+                    <td class="col_category">{{ $item->detail }}</td>
+                    <td class="col_button">
                         <div class="btn_part flex">
                             <a href="{{ route('items.editor.view',$item->id) }}" class="block">
                                 <x-primary-button>

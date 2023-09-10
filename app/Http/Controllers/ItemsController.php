@@ -18,6 +18,7 @@ class ItemsController extends Controller
 //検索機能はSearchControllerに記述
     public function index()
     {
+        $choices = Category::all();
         $auth_users = Users::all();//Usersテーブルの情報をデータベースのusersテーブルから全て取得
         $items = Item::where('delete_flag', 0)->get();
         //なんかデータベースからデータを取り出す方法はall()や上記以外にもめっちゃあるらしいです
@@ -28,7 +29,7 @@ class ItemsController extends Controller
 
 
         $login_user = Auth::user();//ログインユーザー情報を取得
-        return view('index_items',compact('auth_users','items','login_user'));
+        return view('index_items',compact('auth_users','items','login_user','choice'));
         //表示したいblade.phpファイルがresourcesのviewsから見て何らかのフォルダに入っている場合、
         // 上記のように.でつなげる。上ならviewsの中のauthフォルダの中のlogin.blade.phpを表示
     }

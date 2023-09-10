@@ -7,18 +7,21 @@
 
     <div class="index-items-outerwrap">
         <div class="index-items-innerwrap mx-auto sm:px-6 lg:px-8">
-            <div class="search_box">
-                <form class="search_form" method="post" action="{{ route('searched.items.index') }}" enctype="multipart/form-data">
-                    @csrf
-                    <input type="text" name="searchTerm" placeholder="検索キーワードを入力">
-                    {{-- ここでname="searchTerm"となっているので、ここで入力した値がinput('searchTerm')が定義された値がpostされて、actionのSearchControllerに --}}
-                    {{-- とんでいると思われる --}}
-                    <x-primary-button style="padding: 0.5rem;">
-                        検索
-                    </x-primary-button>
-                </form>
+            <div class="flex">
+                <div class="search_box">
+                    <form class="search_form" method="post" action="{{ route('searched.items.index') }}" enctype="multipart/form-data">
+                        @csrf
+                        <input type="text" name="searchTerm" placeholder="検索キーワードを入力">
+                        {{-- ここでname="searchTerm"となっているので、ここで入力した値がinput('searchTerm')が定義された値がpostされて、actionのSearchControllerに --}}
+                        {{-- とんでいると思われる --}}
+                        <x-primary-button style="padding: 0.5rem;">
+                            検索
+                        </x-primary-button>
+                    </form>
+                </div>
+                @include('layouts.categories_table')
             </div>
-            <table class="table table-striped table-hover">
+            <table class="index_table table table-striped table-hover table-bordered">
                 <thead>
                         <tr>
                         <th scope="col">ID</th>

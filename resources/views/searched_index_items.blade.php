@@ -7,10 +7,13 @@
 
     <div class="index-items-outerwrap">
         <div class="index-items-innerwrap mx-auto sm:px-6 lg:px-8">
-            <div class="search_count container" >
-                <p>検索されたキーワードを含む商品は、全部で <strong>{{ $count_search_results }}</strong>件です。</p>
+            <div class="flex">
+                <div class="search_count container" >
+                    <p>検索されたキーワードを含む商品は、全部で <strong>{{ $count_search_results }}</strong>件です。</p>
+                </div>
+                @include('layouts.categories_table')
             </div>
-            <table class="table table-striped table-hover">
+            <table class="index_table table table-striped table-hover table-bordered">
                 <thead>
                         <tr>
                         <th scope="col">ID</th>

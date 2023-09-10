@@ -3,15 +3,18 @@
 
 /* app.blade.css全体のCSS */
 
+
 .outerwrap {
     width: 100%;
     margin:auto 0;
     padding: 1rem;
+    background: url(../images/products_warehouse.png) no-repeat center center/cover;
 }
 .innerwrap {
     margin: 0 auto;
     padding-top: 15rem;
     width: 100%;
+    opacity: 0.9;
 }
 
 @media (min-width: 1024px) {
