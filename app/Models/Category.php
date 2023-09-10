@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Categories extends Model
+class Category extends Model
 {
     use HasFactory;
 
@@ -27,6 +27,6 @@ class Categories extends Model
     //ここにnullableをつけていないやつやtimestampsみたいな自動で勝手に入るやつ以外を除いて勝手に
     //されるやつ以外を書いておかないと、エラーになる
     public function items(){
-        return $this->hasMany(Items::class);
+        return $this->hasMany(Item::class);
     }
 }

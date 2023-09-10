@@ -7,7 +7,9 @@
             <a href="{{ route('home') }}" >{{ 'Home' }}</a>
             <a href="{{ route('index_items.view') }}" >商品一覧</a>
             <a href="{{ route('register_items.view') }}" >商品登録</a>
-            <a href="{{ route('items.editor.view') }}">{{ '商品詳細/情報編集' }}</a>
+            {{-- <a href="{{ route('items.editor.view',$item->id) }}" >{{ '商品詳細/編集' }}</a> --}}
+            {{-- おそらく、main_navを@includeで多く使い回しているため、$itemが渡っていないbladeに引っかかり、
+                上のコメントアウトをとるとエラーになる。--}}
         </div>
         @endif
         <div class="users_selectbox">

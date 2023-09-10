@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
-class Items extends Model
+class Item extends Model
 {
     use HasFactory;
     //$fillable = [～]の～に対応するmigrationのファイルのカラム名を書くことで
@@ -32,7 +32,7 @@ class Items extends Model
     //ここにnullableをつけていないやつやtimestampsみたいな自動で勝手に入るやつ以外を除いて勝手に
     //されるやつ以外を書いておかないと、エラーになる
     public function category(){
-        return $this->belongsTo(Categories::class);
+        return $this->belongsTo(Category::class);
     }
     public function user(){
         return $this->belongsTo(Users::class);

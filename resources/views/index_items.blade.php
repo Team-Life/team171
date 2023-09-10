@@ -41,12 +41,20 @@
                     <td>{{ $item->type }}</td>
                     <td>{{ $item->detail }}</td>
                     <td>
-                        <form action="{{ route('item.destroy', ['id' => $item->id]) }}" method="POST"><!-- itemテーブルのidカラムを取り出す -->
+                        <div class="btn_part flex">
+                        <a href="{{ route('items.editor.view',$item->id) }}" class="block">
+                            <x-primary-button>
+                                編集
+                            </x-primary-button>
+                        </a>
+                        <form action="{{ route('item.destroy', ['id' => $item->id]) }}" method="POST" class="block">
+                        {{-- itemテーブルのidカラムを取り出す --}}
                         @csrf   {{-- ←の@csrfがないとPOSTできない --}}
                         @method('DELETE')
                             <button type="submit" id="delete-item_id-{{ $item->id }}" class="btn btn-outline-primary">削除</button>
                             <input type="hidden" class="" name="item_id" value="{{ $item->id }}">
                         </form>
+                        </div>
                     </td>
                     </tr>
                     @endforeach

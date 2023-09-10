@@ -36,6 +36,6 @@ class Users extends Model
     //ここにnullableをつけていないやつやtimestampsみたいな自動で勝手に入るやつ以外を除いて勝手に
     //されるやつ以外を書いておかないと、エラーになる
     public function items(){
-        return $this->hasMany(Items::class);
+        return $this->hasMany(Item::class);
     }
 }

@@ -28,13 +28,20 @@
                     <td>{{ $search_result->type }}</td>
                     <td>{{ $search_result->detail }}</td>
                     <td>
-                        <form action="{{ route('item.destroy', ['id' => $search_result->id]) }}" method="post">
-                                        {{-- itemsテーブルのidカラムを取り出す --> --}}
-                        @csrf   {{-- ←の@csrfがないとPOSTできない --}}
-                        @method('DELETE')
-                            <button type="submit" id="delete-item_id-{{ $search_result->id }}" class="btn btn-outline-primary">削除</button>
-                            <input type="hidden" class="" name="item_id" value="{{ $search_result->id }}">
-                        </form>
+                        <div class="btn_part flex">
+                            <a href="{{ route('items.editor.view',$item->id) }}" class="block">
+                                <x-primary-button>
+                                    編集
+                                </x-primary-button>
+                            </a>
+                            <form action="{{ route('item.destroy', ['id' => $search_result->id]) }}" class="block" method="post">
+                                            {{-- itemsテーブルのidカラムを取り出す --> --}}
+                            @csrf   {{-- ←の@csrfがないとPOSTできない --}}
+                            @method('DELETE')
+                                <button type="submit" id="delete-item_id-{{ $search_result->id }}" class="btn btn-outline-primary">削除</button>
+                                <input type="hidden" class="" name="item_id" value="{{ $search_result->id }}">
+                            </form>
+                        </div>
                     </td>
                     </tr>
                     @endforeach

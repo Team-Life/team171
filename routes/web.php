@@ -77,7 +77,7 @@ Route::group(['middleware' => ['auth', 'can:user-higher']], function () {
     //検索結果を表示
     Route::post('/search', [SearchController::class,'SearchAndIndex'])->name('searched.items.index');
     //itemごとに個別表示
-    Route::get('items/show/{item}',[ItemsController::class,'ShowEachItem2'])->name('showeach.item.view');
+    Route::get('items/show/{item}',[ItemsController::class,'ShowEachItem1'])->name('showeach.item.view');
     // Laravelではルート設定にパラメータ（数学と同じで媒介変数？、変わりうる値）を入れる場合、
     // パラメータ名を波括弧で囲むらしい
 });
@@ -90,9 +90,10 @@ Route::group(['middleware' => ['auth', 'can:admin-higher']], function() {
     //管理者アカウントのみ商品を登録することができるためのルート設定
     Route::post('/register/items/post',[ItemsController::class,'store'])->name('register_items.post');
 
-    Route::get('/items/information/edit/view', [ItemsController::class, 'editorview'])->name('items.editor.view');
+    Route::get('/items/editorview/{item}', [ItemsController::class, 'editorview'])->name('items.editor.view');
 
-    Route::patch('/items/information/edit/update', [ItemsController::class, 'update'])->name('items.info.update');
+    Route::patch('/items/update/{item}', [ItemsController::class, 'update'])->name('items.info.update');
+    //patchじゃなくてもputでもいいが、そのときはformの@method('patch')を@method('put')に統一
 
     // 商品一覧からの削除
     Route::delete('items/destroy/{id}', [App\Http\Controllers\ItemsController::class, 'itemdestroy'])->name('item.destroy');

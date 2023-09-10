@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ItemsUpdateRequest;
 use App\Http\Request\RedirectResponse;
-use App\Models\Categories;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
-use App\Models\Items;
+use App\Models\Item;
 use Illuminate\Support\Facades\Auth;//ログインユーザーに関する情報をAuth::～を使えるようにするuse宣言
 use App\Models\Users;//<--User情報をデータベースのusersテーブルから持ってくるために書く宣言
 use Illuminate\Http\RedirectResponse as HttpRedirectResponse;
@@ -19,7 +19,7 @@ class ItemsController extends Controller
     public function index()
     {
         $auth_users = Users::all();//Usersテーブルの情報をデータベースのusersテーブルから全て取得
-        $items = Items::where('delete_flag', 0)->get();
+        $items = Item::where('delete_flag', 0)->get();
         //なんかデータベースからデータを取り出す方法はall()や上記以外にもめっちゃあるらしいです
         // おおきくSQLクエリビルダとEloquent ORMに分かれる。上やall()は後者
         //::where('条件をつける対応するマイグレーションファイルに対応するテーブルのカラム','条件')->get();
@@ -42,7 +42,7 @@ class ItemsController extends Controller
     public function itemdestroy(Request $request, $id)
     {
         // テーブルから指定のIDのレコード1件を取得
-        $item = Items::find($id);
+        $item = Item::find($id);
         if (!$item) {
             // アイテムが存在しない場合の処理（エラー処理など）
             return redirect()->route('index_items.view'); // 一覧ページにリダイレクト
@@ -60,9 +60,9 @@ class ItemsController extends Controller
 
     public function ShowItemsRegisterScreen()
     {
-        $choices = Categories::all();
+        $choices = Category::all();
         $auth_users = Users::all();//Usersテーブルの情報をデータベースのusersテーブルから全て取得
-        $items = Items::all();
+        $items = Item::all();
         $login_user = Auth::user();//ログインユーザー情報を取得
         /**
          * Categoryモデルと紐付いた、Categoryテーブルからデータを全て取得
@@ -99,7 +99,7 @@ class ItemsController extends Controller
         ];
 
         //整理して作った$dataToInsertを挿入する
-        $RegisteredItemPost = Items::create($dataToInsert);//ここのcreateはレコードを挿入するメソッド
+        $RegisteredItemPost = Item::create($dataToInsert);//ここのcreateはレコードを挿入するメソッド
         return back();/**->with('message','無事送信されました。')**/
     }
 
@@ -109,63 +109,67 @@ class ItemsController extends Controller
 
     // 個別表示機能追加
 
-    //public function ShowEachItem1(Items $item){
+    public function ShowEachItem1(Item $item){
         // 関数の中の第一引数は、タイプヒント（引数の型を指定するもの  ※モデル名を書いて引数の型を制限
         // 第二引数の名前は任意でいいが、おそらくRoute設定のパラメータ名と一致させる必要がある）
         // おそらく、$itemはItemsモデルのインスタンスにあたる。
         // これを書いた時点で$itemのidをデータベースに受け渡し、
-        //該当の$itemレコードを取得という流れが設定されたことになるらしい（依存注入という）。
-      //return view('show_each_item',compact('eachitem'));
-        //※$itemを渡しているのは、show_each_item.blade.phpであることに注意
-    //}
-
-    // 同じ意味だが、次の書き方の場合、おそらくRoute設定の自由はきく
-    public function ShowEachItem2($id){
-        // idをもとにItemsモデルと紐付いたitemsテーブルから各レコードを取得
-        $item = Items::find($id);
+        // 該当の$itemレコードを取得という流れが設定されたことになるらしい（依存注入という）。
         return view('show_each_item',compact('item'));
+        // ※$itemを渡しているのは、show_each_item.blade.phpであることに注意
     }
 
-
-
+    // // 同じ意味だが、次の書き方の場合、おそらくRoute設定の自由はきく
+    // public function ShowEachItem2($id){
+    //     // idをもとにItemsモデルと紐付いたitemsテーブルから各レコードを取得
+    //     $item = Item::find($id);
+    //     return view('show_each_item',compact('item'));
+    // }これを使う場合、routeメソッドを使う場合、route('',$item->id)にする必要があると思われる
 
 // ---------------------------ItemsInfoEditフォルダのedit.blade.phpに関する関数--------------------------------------
 
         /**
-     * 商品詳細・編集画面の表示（ProfileControllerを真似して、なんとなく作成）
+     * 商品詳細・編集画面の表示（ProfileControllerを真似しつつ、Laravelの教科書を参考に作成。下枠の注意書きに注意）
      */
-    public function editorview(Items $information)
+    public function editorview($id)
     {
         $auth_users = Users::all();//Usersテーブルの情報をデータベースのusersテーブルから全て取得
         $login_user = Auth::user();//ログインユーザー情報を取得
-        $registered_item_informations = Items::all();
-        return view('ItemsInfoEdit.edit',compact('auth_users','login_user','registered_item_informations','information'));
+        $registered_item_informations = Item::all();
+        return view('ItemsInfoEdit.edit',compact('auth_users','login_user','registered_item_informations'));
     }
-
+    // ---------------------------------------------------------------------------------------------------------------------------
+    // ここで変数にidを指定しているので、この関数に対する{{ route('items.editor.view',$item->id) }}の「->id」がないとエラーになる
+    // なお、上のcompact内に$itemないが、渡したbladeでregistered_item_informationsを@foreach( )で as $itemとしているので使える
+    // --------------------------------------------------------------------------------------------------------------------------
         /**
-     * 商品詳細・編集画面で商品内容の編集（ProfileControllerを真似して、なんとなく作成）
+     * 商品詳細・編集画面の表示（ProfileControllerを真似しつつ、Laravelの教科書を参考に作成。上の注意書き、
+     * タイプヒントに注意）
      */
-    public function update(Request $request, Items $information)
+    //updateメソッドでは、引数はRequest $requestと
+    public function update(Request $request, Item $item)
     {
 
         // 更新データの連想配列を作成
         $validated = $request->validate([
-            'name' => $request->input('edited_name'),
-            'type' => $request->input('edited_type'),
-            'detail' => $request->input('edited_detail'),
-            'delete_flag' => $request->input('edited_delete_flag'),
+            'name' => 'required',
+            'type' => 'required',
+            'detail' => 'required|max:400',
+            'delete_flag' => 'required'
         ]);
 
         $validated['updated_by'] = auth()->id(); // ログインユーザーidを取得する
-        $validated['updated_at'] = now();
+        //おそらく、これでログインしている人（＝編集者）のidを代入になっているはず
 
         // モデルを取得し、条件に一致するレコードを更新
         // ここでは、例として id カラムが $request->input('id') に一致するレコードを更新すると仮定しています。
-        $information->update($validated);
+        $item->update($validated);//<--updateメソッドで更新
 
-        $request->session();
-        return back();
+        //なお、更新後は、update
 
+        // $request->session();
+        return back()->with('message','商品情報の更新をしました。');
+                        //更新後のメッセージを$messageでbladeに渡す
     }
 
 }

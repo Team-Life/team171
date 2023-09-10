@@ -12,7 +12,7 @@ class ItemsSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\Items::create([
+        \App\Models\Item::create([
             'user_id' => fake()->numberBetween($min=30,$max=100),//指定した範囲内の整数のどれか
             'name' => fake()->realText(10),
             'type' => fake()->numberBetween($min=1,$max=8),
@@ -25,7 +25,7 @@ class ItemsSeeder extends Seeder
             //idのカラムは要らない
         ]);
 
-        \App\Models\Items::create([
+        \App\Models\Item::create([
             'user_id' => fake()->numberBetween($min=30,$max=100),//指定した範囲内の整数のどれか
             'name' => '地球破壊爆弾',//左のように文字列もmigrationファイルの条件を満たせば日本語も可能（シングルクォーテーションではさむ）
             'type' => fake()->numberBetween($min=1,$max=8),
@@ -38,7 +38,7 @@ class ItemsSeeder extends Seeder
             //idのカラムは要らない
         ]);//矢印の先のデータ型もマイグレーションファイルの設定に合わせる
 
-        \App\Models\Items::create([
+        \App\Models\Item::create([
             'user_id' => fake()->numberBetween($min=30,$max=100),//指定した範囲内の整数のどれか
             'name' => fake()->realText(10),//realTextはなぜか宮沢賢治の「銀河鉄道の夜」から単語を拾うオプション
             'type' => fake()->numberBetween($min=1,$max=8),
@@ -51,7 +51,7 @@ class ItemsSeeder extends Seeder
             //idのカラムは要らない
         ]);
 
-        \App\Models\Items::create([
+        \App\Models\Item::create([
             'user_id' => fake()->numberBetween($min=30,$max=100),//指定した範囲内の整数のどれか
             'name' => '週刊少年ジャンプ',
             'type' => 6,
@@ -66,7 +66,7 @@ class ItemsSeeder extends Seeder
         ]);
 
 
-        \App\Models\Items::create([
+        \App\Models\Item::create([
             'user_id' => fake()->numberBetween($min=30,$max=100),//指定した範囲内の整数のどれか
             'name' => '我が輩の万年筆',
             'type' => 2,
@@ -80,7 +80,7 @@ class ItemsSeeder extends Seeder
             //idのカラムは要らない
         ]);
 
-        \App\Models\Items::create([
+        \App\Models\Item::create([
             'user_id' => fake()->numberBetween($min=30,$max=100),//指定した範囲内の整数のどれか
             'name' => '週刊少年マガジン',
             'type' => 6,
@@ -94,7 +94,7 @@ class ItemsSeeder extends Seeder
             //idのカラムは要らない
         ]);
 
-        \App\Models\Items::create([
+        \App\Models\Item::create([
             'user_id' => fake()->numberBetween($min=30,$max=100),//指定した範囲内の整数のどれか
             'name' => 'すごい釣り竿',
             'type' => 7,
@@ -109,7 +109,7 @@ class ItemsSeeder extends Seeder
         ]);
 
 
-        \App\Models\Items::create([
+        \App\Models\Item::create([
             'user_id' => fake()->numberBetween($min=30,$max=100),//指定した範囲内の整数のどれか
             'name' => '竹刀',
             'type' => 7,
