@@ -11,6 +11,7 @@ use Illuminate\View\View;
 use App\Models\Item;
 use Illuminate\Support\Facades\Auth;//ログインユーザーに関する情報をAuth::～を使えるようにするuse宣言
 use App\Models\Users;//<--User情報をデータベースのusersテーブルから持ってくるために書く宣言
+use App\Rules\DataTypeMatch;
 use Illuminate\Http\RedirectResponse as HttpRedirectResponse;
 
 class ItemsController extends Controller
@@ -83,7 +84,7 @@ class ItemsController extends Controller
         $validated = $request->validate([
             'name' => 'required',//バリデーション、requiredは必須入力
             'type' => 'required',
-            'detail' => 'required|max:400'
+            'detail' => 'required|max:500'
             ]);
 
         //ログインユーザーの情報を取得
@@ -99,12 +100,21 @@ class ItemsController extends Controller
             //idとtimestampsは自動でなんとかしてくれるぽい
         ];
 
+
         //整理して作った$dataToInsertを挿入する
         $RegisteredItemPost = Item::create($dataToInsert);//ここのcreateはレコードを挿入するメソッド
-        return back();/**->with('message','無事送信されました。')**/
+        return back()->with('message','無事登録されました');
     }
 
-    //データベースからの削除は上の::where('items_status',0)で論理削除
+    public function rules()
+    {
+        return [
+            'name' => ['required', new DataTypeMatch('string')],//バリデーション、requiredは必須入力
+            'type' => ['required', new DataTypeMatch('smallInteger')],
+            'detail' => ['required|max:500',new DataTypeMatch('string')]
+        ];
+    }
+
 
 //----------------------------show_each_item.blade.phpに関する関数------------------------------------------------------
 
@@ -157,7 +167,7 @@ class ItemsController extends Controller
         $validated = $request->validate([
             'name' => 'required',
             'type' => 'required',
-            'detail' => 'required|max:400',
+            'detail' => 'required|max:500',
             'delete_flag' => 'required'
         ]);
 
