@@ -12,6 +12,14 @@
 
     <div class="register-items-outerwrap">
         <div class="register-items-innerwrap mx-auto sm:px-6 lg:px-8">
+
+            {{-- POST通信によるデータベースの保存が成功であれば表示、 --}}
+            @if (session('message'))
+            <div class="post_success leading-relaxed" style="margin: 0 auto;">
+                <p>{{ session('message') }}</p>
+            </div>
+            @endif
+
             <form class="register_form" action="{{ route('register_items.post') }}" method="post" enctype="multipart/form-data">
                 @csrf   {{-- クロスサイトリクエストフォージェリ攻撃の防御呪文的なやつ --}}
                 @include('layouts.form_contents')

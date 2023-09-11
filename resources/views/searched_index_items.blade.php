@@ -37,7 +37,7 @@
                     <td class="col_detail">{{ $search_result->detail }}</td>
                     <td class="col_button">
                         <div class="btn_part">
-                            <a href="{{ route('items.editor.view',$item->id) }}" class="block">
+                            <a href="{{ route('items.editor.view',$search_result->id) }}" class="block">
                                 {{-- 上記のroute(,)では第二引数を->idとするのが講師の先生に聞くまで分からず --}}
                                 <x-primary-button>
                                     編集

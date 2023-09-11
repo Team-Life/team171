@@ -109,9 +109,9 @@ class ItemsController extends Controller
     public function rules()
     {
         return [
-            'name' => ['required', new DataTypeMatch('string')],//バリデーション、requiredは必須入力
-            'type' => ['required', new DataTypeMatch('smallInteger')],
-            'detail' => ['required|max:500',new DataTypeMatch('string')]
+            'name' => 'required',//バリデーション、requiredは必須入力
+            'type' => 'required',
+            'detail' => 'required|max:500'
         ];
     }
 
