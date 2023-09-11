@@ -27,7 +27,7 @@
         <textarea class="form-control  leading-relaxed rounded-md" name="detail" id="detail" cols="30" rows="10"></textarea>
     </div>
         <x-primary-button style="margin-top: 1rem;padding:0.7rem 1.2rem 0.7rem 1.2rem;font-size:1rem;line-height: 1.5rem;">
-            Submit
+            登録
         </x-primary-button>
     {{-- この↑のx-～はresourceのviewsのcomponents内のパーツが挿入されます --}}
 </div>

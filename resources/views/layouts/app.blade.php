@@ -58,6 +58,8 @@
         <script src="{{ asset('/js/WindowModal_nav.js') }}"></script>
         <script src="{{ asset('/js/modal_adminPage.js') }}"></script>
         <script src="{{ asset('/js/modal_ContactPage.js') }}"></script> --}}
+        {{-- 背景のcss --}}
+        <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
 
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
