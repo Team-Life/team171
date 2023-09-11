@@ -1,6 +1,11 @@
 <x-guest-layout>
     <x-slot name="header">
-        @include('layouts.navigations.home_nav')
+        <div class="conditional-include1">
+            @include('layouts.navigations.home_nav')
+        </div>
+        <div class="conditional-include2">
+            @include('layouts.navigations.responsive_nav')
+        </div>
     </x-slot>
     <div class="mb-4 text-sm text-gray-600">
         {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}

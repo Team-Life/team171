@@ -1,6 +1,11 @@
 <x-guest-layout>
     <x-slot name="header">
-        @include('layouts.navigations.home_nav')
+        <div class="conditional-include1">
+            @include('layouts.navigations.home_nav')
+        </div>
+        <div class="conditional-include2">
+            @include('layouts.navigations.responsive_nav')
+        </div>
     </x-slot>
     <form method="POST" action="{{ route('password.store') }}">
         @csrf

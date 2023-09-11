@@ -17,25 +17,25 @@
         {{-- BootstrapのCSS --}}
         <link href="./../../../../bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css" rel="stylesheet" >
 
-        {{-- responsive navigation --}}
-        {{-- <style>
-            @media (min-width: 1282px) {   1283px 以上の幅の場合
+        {{-- responsive navigation 画面の横幅（1282px）を境にblockなら表示、noneなら非表示--}}
+        <style>
+            @media (min-width: 1282px) {
                 .conditional-include1 {
-                    display: block;   表示させる
+                    display: block;
                 }
                 .conditional-include2 {
-                    display: none;   非表示にする
+                    display: none;
                 }
             }
-            @media (max-width: 1282px) {   1282px 以下の幅の場合
+            @media (max-width: 1282px) {
                 .conditional-include1 {
-                    display: none;   非表示にする
+                    display: none;
                 }
                 .conditional-include2 {
-                    display: block;   表示させる
+                    display: block;
                 }
             }
-        </style> --}}
+        </style>
 
         {{-- Styles ! tailwindcss v3.2.4 | MIT License | https://tailwindcss.com --}}
         <style>
@@ -48,17 +48,11 @@
         <link href="{{ asset('/css/navigation.css') }}" rel="stylesheet">
         <link href="{{ asset('css/register_view.css') }}" rel="stylesheet" >
         <link rel="stylesheet" href="{{ asset('css/app_footer.css') }}">
-        {{-- <link href="{{ asset('/css/responsive_m.css') }}" rel="stylesheet" media="screen and (max-width: 767px)"> --}}
 
         {{-- BootstrapのCSS bootstrap-5.3.0-alpha1-dist/css/bootstrap.min.css --}}
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
         {{-- 他のscripts --}}
-        {{-- <script src="{{ asset('/js/home.js') }}"></script>
-        <script src="{{ asset('/js/appblade.js') }}"></script>
-        <script src="{{ asset('/js/WindowModal_nav.js') }}"></script>
-        <script src="{{ asset('/js/modal_adminPage.js') }}"></script>
-        <script src="{{ asset('/js/modal_ContactPage.js') }}"></script> --}}
 
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 

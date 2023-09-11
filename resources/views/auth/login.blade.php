@@ -1,6 +1,11 @@
 <x-guest-layout>
     <x-slot name="header">
-        @include('layouts.navigations.home_nav')
+        <div class="conditional-include1">
+            @include('layouts.navigations.home_nav')
+        </div>
+        <div class="conditional-include2">
+            @include('layouts.navigations.responsive_nav')
+        </div>
     </x-slot>
     {{-- Session Status --}}
     <x-auth-session-status class="mb-4" :status="session('status')" />
