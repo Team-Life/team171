@@ -4,7 +4,7 @@
                 {{ '商品情報詳細・商品情報編集（Items Information detail & edit）' }}
         </h2>
         <p class="mt-1 text-sm text-gray-600">
-                {{ '管理者アカウントのみ、商品情報・論理削除用の真偽値を編集できます' }}
+                {{ '管理者アカウントのみ、商品情報論理削除用のdelete_flagの値を編集できます' }}
         </p>
     </header>
 

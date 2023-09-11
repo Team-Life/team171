@@ -129,3 +129,14 @@ body{
     color: blue;
 }
 
+/* 商品編集画面のCSS */
+.item_edit_area{
+    width: 130%;
+    margin-right: 5%;
+}
+
+.categories_table_area{
+    width: 20%;
+    margin-top: 10%;
+}
+
