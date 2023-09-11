@@ -1,6 +1,6 @@
 <?php
 /**
- * open app後、
+ * open app（つまりは、このteam171をデプロイ）後、
  *
  * １、ログイン後のホーム画面で、画面中央左の「Configure Add on」をクリック
  * ２、JawsDB MySQLの無料プランを選択
