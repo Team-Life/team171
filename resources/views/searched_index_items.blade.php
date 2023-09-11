@@ -14,7 +14,7 @@
         <div class="index-items-innerwrap mx-auto sm:px-6 lg:px-8">
             <div class="flex">
                 <div class="search_count container" >
-                    <p style="font-size:1.3rem;">検索されたキーワードを含む商品は、全部で <strong style="font-size:2rem;">{{ $count_search_results }}</strong>件です。</p>
+                    <p style="font-size:1rem;">検索されたキーワードを含む商品は、全部で <strong style="font-size:2rem;">{{ $count_search_results }}</strong>件です。</p>
                 </div>
                 @include('layouts.categories_dropdown')
             </div>

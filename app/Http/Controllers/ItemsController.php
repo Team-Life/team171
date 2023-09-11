@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\ItemsUpdateRequest;
 use App\Http\Request\RedirectResponse;
 use App\Models\Category;
@@ -56,64 +57,66 @@ class ItemsController extends Controller
     }
 // ---------------------------- register_items.blade.php に関する関数-------------------------
 
-    /**
+/**
      *商品登録画面の表示
      * **/
 
-    public function ShowItemsRegisterScreen()
+        public function ShowItemsRegisterScreen()
     {
-        $choices = Category::all();
-        $auth_users = Users::all();//Usersテーブルの情報をデータベースのusersテーブルから全て取得
-        $items = Item::all();
-        $login_user = Auth::user();//ログインユーザー情報を取得
-        /**
-         * Categoryモデルと紐付いた、Categoryテーブルからデータを全て取得
-         *なぜか、ここでは::with('categories')->get();は使えない
-         * **/
+    $choices = Category::all();
+    $auth_users = Users::all();//Usersテーブルの情報をデータベースのusersテーブルから全て取得
+    $items = Item::all();
+    $login_user = Auth::user();//ログインユーザー情報を取得
+    /**
+          * Categoryモデルと紐付いた、Categoryテーブルからデータを全て取得
+          *なぜか、ここでは::with('categories')->get();は使えない
+          * **/
         return view('register_items',compact('choices','auth_users','items','login_user'));
     }
 
     /**
-     * 商品のデータベースへの登録機能の関数
-     */
-    public function store(Request $request)
+      * 商品のデータベースへの登録機能の関数
+      */
+        public function store(Request $request)
     {
-        //Request $requestの部分でフォームから送信されたデータを受け取る
-        //最初のRequestは、use宣言で使われているillumiinate\Http\Requestを指している
+         //Request $requestの部分でフォームから送信されたデータを受け取る
+         //最初のRequestは、use宣言で使われているillumiinate\Http\Requestを指している
 
         $validated = $request->validate([
-            'name' => 'required',//バリデーション、requiredは必須入力
-            'type' => 'required',
+            'name' => 'required|max:100|string',//バリデーション、requiredは必須入力
+            'type' => 'required|Integer',
             'detail' => 'required|max:500'
             ]);
 
-        //ログインユーザーの情報を取得
+         //ログインユーザーの情報を取得
         $login_user = Auth::user();//// もしくは= $request->user();
 
-        //上2つを組み合わせて、テーブルに挿入するデータを作成
+         //上2つを組み合わせて、テーブルに挿入するデータを作成
         $dataToInsert = [
-            'user_id' => $login_user->id,
-            'name' => $validated['name'],
-            'type' => $validated['type'],
-            'detail' => $validated['detail'],
-            'updated_by' => $login_user->id,
-            //idとtimestampsは自動でなんとかしてくれるぽい
+        'user_id' => $login_user->id,
+        'name' => $validated['name'],
+        'type' => $validated['type'],
+        'detail' => $validated['detail'],
+        'updated_by' => $login_user->id,
+             //idとtimestampsは自動でなんとかしてくれるぽい
         ];
 
 
-        //整理して作った$dataToInsertを挿入する
+         //整理して作った$dataToInsertを挿入する
         $RegisteredItemPost = Item::create($dataToInsert);//ここのcreateはレコードを挿入するメソッド
         return back()->with('message','無事登録されました');
     }
 
-    public function rules()
-    {
-        return [
-            'name' => 'required',//バリデーション、requiredは必須入力
-            'type' => 'required',
-            'detail' => 'required|max:500'
-        ];
-    }
+
+    // public function rules1()
+    // {
+    //     return [
+    //         'name' => ['required',new DataTypeMatch('string', ':data_type_match')],//バリデーション、requiredは必須入力
+    //         'type' => ['required',new DataTypeMatch('smallInteger', ':data_type_match')],
+    //         'detail' => ['required|max:500',new DataTypeMatch('string', ':data_type_match')]
+    //     ];
+    // }
+
 
 
 //----------------------------show_each_item.blade.phpに関する関数------------------------------------------------------
@@ -165,10 +168,10 @@ class ItemsController extends Controller
 
         // 更新データの連想配列を作成
         $validated = $request->validate([
-            'name' => 'required',
-            'type' => 'required',
+            'name' => 'required|max:100|string',//バリデーション、requiredは必須入力
+            'type' => 'required|Integer',//migrationファイルのデータ型を参照
             'detail' => 'required|max:500',
-            'delete_flag' => 'required'
+            'delete_flag' => 'required|boolean'
         ]);
 
         $validated['updated_by'] = auth()->id(); // ログインユーザーidを取得する
@@ -185,4 +188,14 @@ class ItemsController extends Controller
                         //更新後のメッセージを$messageでbladeに渡す
     }
 
+
+    // public function rules2()
+    // {
+    //     return [
+    //         'name' => ['required',new DataTypeMatch('string', ':data_type_match')],//バリデーション、requiredは必須入力
+    //         'type' => ['required',new DataTypeMatch('smallInteger', ':data_type_match')],
+    //         'detail' => ['required|max:500',new DataTypeMatch('string', ':data_type_match')],
+    //         'delete_flag' => ['required',new DataTypeMatch('boolean', ':data_type_match')]
+    //     ];
+    // }
 }
