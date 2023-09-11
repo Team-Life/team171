@@ -4,9 +4,8 @@
         <div class="btn-group dropstart">
             <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false"
                 style="color: black; font-weight:bold; background-color:white ; ">
-                <span class="hidden">Toggle Dropstart</span>
             </button>
-            <ul class="dropdown-menu" style="padding:0.5rem 1rem 0.5rem 1rem;width:250%;">
+            <ul class="dropdown-menu" style="padding:0.5rem 0 0.5rem 1rem;width:250%;">
             {{-- Dropdown menu links- --}}
                 <li><a href="{{ route('home') }}" >{{'Home'}}</a></li>
                 <li><a href="{{ route('login_screen') }}" class="login_screen">ログイン画面</a></li>

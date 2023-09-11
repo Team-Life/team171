@@ -138,7 +138,7 @@
     padding-top: 2rem;
 }
 
-.dropdown-menu li a {
+.dropdown-menu li{
     text-align: left;
     color: blue;
     font-weight: bold;
