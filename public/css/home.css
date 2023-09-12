@@ -1,0 +1,15 @@
+@import url(./template.css);
+
+.dashboard-menu,
+.login_info {
+    width: 60%;
+    margin: 0 auto;
+    border: 1px solid;
+    padding: 0.5rem;
+    font-size: 1rem;
+}
+
+.dashboard-menu a span:hover{
+    text-decoration: underline;
+    color: blue;
+}

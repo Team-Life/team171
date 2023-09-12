@@ -1,5 +1,6 @@
 /.phpunit.cache
 /node_modules
+#  上のコメントアウトでnpm run devをしなくても済むはずです。
 /public/build
 /public/hot
 /public/storage

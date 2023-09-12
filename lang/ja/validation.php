@@ -191,7 +191,7 @@ return [
         'date' => '日付',
         'date_of_birth' => '生年月日',
         'day' => '日',
-        'deleted_at' => '削除日',
+        'status' => '削除日',
         'description' => '説明',
         'district' => '地区',
         'duration' => '期間',
