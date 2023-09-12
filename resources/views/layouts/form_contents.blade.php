@@ -32,7 +32,7 @@
         </p>
         <textarea class="form-control  leading-relaxed rounded-md" name="detail" id="detail" cols="30" rows="10" value="{{ old('detail') }}"></textarea>
         @error('detail')
-        <div class="alert alert-danger">{{ $message }}</div>
+        <div class="alert alert-danger" style="margin-top: 0.5rem;">{{ $message }}</div>
         @enderror
     </div>
     {{-- エラーメッセージ表示 --}}
