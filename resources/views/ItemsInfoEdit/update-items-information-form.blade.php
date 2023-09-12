@@ -18,30 +18,45 @@
             <x-text-input id="id" name="id" type="text" class="mt-1 block w-full" :value="old('id', $item->id)"  />
             <x-input-error class="mt-2" :messages="$errors->get('id')" />
         </div>
+        @error('id')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
 
         <div>
             <label for="name">{{ __('商品名（Items Name）') }}</label>
             <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $item->name)" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
+        @error('name')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
 
         <div>
             <label for="type">{{ __('商品種別（Category Number）') }}</label>
             <x-text-input id="type" name="type" type="text" class="mt-1 block w-full" :value="old('type', $item->type)" />
             <x-input-error class="mt-2" :messages="$errors->get('type')" />
         </div>
+        @error('type')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
 
         <div>
             <label for="detail">{{ __('商品詳細（Items Detail）') }}</label>
             <x-text-input id="detail" name="detail" type="text" class="mt-1 block w-full" :value="old('detail', $item->detail)" />
             <x-input-error class="mt-2" :messages="$errors->get('detail')" />
         </div>
+        @error('detail')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
 
         <div>
             <label for="delete_flag">{{ __('（論理）削除フラグ（delete_flag）') }}</label>
             <x-text-input id="delete_flag" name="delete_flag" type="text" class="mt-1 block w-full" :value="old('delete_flag', $item->delete_flag)" />
             <x-input-error class="mt-2" :messages="$errors->get('delete_flag')" />
         </div>
+        @error('delete_flag')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
 
         <div class="flex items-center gap-4">
             <x-primary-button class='edit_save_btn'>
