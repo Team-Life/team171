@@ -13,6 +13,14 @@
                 <li><a href="{{ route('dashboard') }}" class="home_menu" >{{ 'Home menu' }}</a></li>
                 <li><a href="{{ route('index_items.view') }}" class="index_items" >{{ '商品一覧/検索' }}</a></li>
                 <li><a href="{{ route('register_items.view') }}" class="register_items.view" >{{ '商品登録（弊社社員専用）' }}</a></li>
+                <li>
+                    <a>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit">ログアウト</button>
+                    </form>
+                    </a>
+                </li>
             </ul>
             <button type="button" class="btn btn-primary" style="color: black; font-weight:bold; background-color:white ;">
                 menu
