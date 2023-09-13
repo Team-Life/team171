@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
             'email' => 'admin01@gmail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('administrator1'), // パスワードをハッシュ化する関数
-            'remember_token' =>fake()->text(20),
+            'remember_token' =>Hash::make(),
             'role' =>'1',
             'created_at' => now(),//php artisan db:seed --class=CategorySeeder（<--今回のseeder名）をひたすら繰り返す
             'updated_at' => now(),//現在の時刻を入れるメソッド
@@ -31,7 +31,7 @@ class UserSeeder extends Seeder
             'email' => 'admin02@gmail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('administrator2'), // パスワードをハッシュ化する関数
-            'remember_token' =>Hash::make(fake()->text(20)),
+            'remember_token' =>Hash::make(),
             'role' =>'2',
             'created_at' => now(),//php artisan db:seed --class=CategorySeeder（<--今回のseeder名）をひたすら繰り返す
             'updated_at' => now(),//現在の時刻を入れるメソッド
@@ -44,7 +44,7 @@ class UserSeeder extends Seeder
             'email' => 'admin03@gmail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('administrator3'), // パスワードをハッシュ化する関数
-            'remember_token' =>Hash::make(fake()->text(20)),
+            'remember_token' =>Hash::make(),
             'role' =>'3',
             'created_at' => now(),//php artisan db:seed --class=CategorySeeder（<--今回のseeder名）をひたすら繰り返す
             'updated_at' => now(),//現在の時刻を入れるメソッド
@@ -57,7 +57,7 @@ class UserSeeder extends Seeder
             'email' => 'admin04@gmail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('administrator4'), // パスワードをハッシュ化する関数
-            'remember_token' =>Hash::make(fake()->text(20)),
+            'remember_token' =>Hash::make(),
             'role' =>'4',
             'created_at' => now(),//php artisan db:seed --class=CategorySeeder（<--今回のseeder名）をひたすら繰り返す
             'updated_at' => now(),//現在の時刻を入れるメソッド
@@ -70,7 +70,7 @@ class UserSeeder extends Seeder
             'email' => 'admin05@gmail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('administrator5'), // パスワードをハッシュ化する関数
-            'remember_token' =>Hash::make(fake()->text(20)),
+            'remember_token' =>Hash::make(),
             'role' =>'5',
             'created_at' => now(),//php artisan db:seed --class=CategorySeeder（<--今回のseeder名）をひたすら繰り返す
             'updated_at' => now(),//現在の時刻を入れるメソッド
@@ -83,7 +83,7 @@ class UserSeeder extends Seeder
             'email' => 'admin06@gmail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('administrator6'), // パスワードをハッシュ化する関数
-            'remember_token' =>Hash::make(fake()->text(20)),
+            'remember_token' =>Hash::make(),
             'role' =>'6',
             'created_at' => now(),//php artisan db:seed --class=CategorySeeder（<--今回のseeder名）をひたすら繰り返す
             'updated_at' => now(),//現在の時刻を入れるメソッド
@@ -97,7 +97,7 @@ class UserSeeder extends Seeder
             'email' => 'admin07@gmail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('administrator7'), // パスワードをハッシュ化する関数
-            'remember_token' =>Hash::make(fake()->text(20)),
+            'remember_token' =>Hash::make(),
             'role' =>'7',
             'created_at' => now(),//php artisan db:seed --class=CategorySeeder（<--今回のseeder名）をひたすら繰り返す
             'updated_at' => now(),//現在の時刻を入れるメソッド
@@ -110,7 +110,7 @@ class UserSeeder extends Seeder
             'email' => 'admin08@gmail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('administrator8'), // パスワードをハッシュ化する関数
-            'remember_token' =>Hash::make(fake()->text(20)),
+            'remember_token' =>Hash::make(),
             'role' =>'8',
             'created_at' => now(),//php artisan db:seed --class=CategorySeeder（<--今回のseeder名）をひたすら繰り返す
             'updated_at' => now(),//現在の時刻を入れるメソッド
@@ -123,7 +123,7 @@ class UserSeeder extends Seeder
             'email' => 'admin09@gmail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('administrator9'), // パスワードをハッシュ化する関数
-            'remember_token' =>Hash::make(fake()->text(20)),
+            'remember_token' =>Hash::make(),
             'role' =>'9',
             'created_at' => now(),//php artisan db:seed --class=CategorySeeder（<--今回のseeder名）をひたすら繰り返す
             'updated_at' => now(),//現在の時刻を入れるメソッド
@@ -136,7 +136,7 @@ class UserSeeder extends Seeder
             'email' => 'admin10@gmail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('administrator10'), // パスワードをハッシュ化する関数
-            'remember_token' =>Hash::make(fake()->text(20)),
+            'remember_token' =>Hash::make(),
             'role' =>'10',
             'created_at' => now(),//php artisan db:seed --class=CategorySeeder（<--今回のseeder名）をひたすら繰り返す
             'updated_at' => now(),//現在の時刻を入れるメソッド
@@ -149,7 +149,7 @@ class UserSeeder extends Seeder
             'email' => 'wagahai@gmail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('IAmACat_IDoNotHaveMyName'), // パスワードをハッシュ化する関数
-            'remember_token' =>Hash::make(fake()->text(20)),
+            'remember_token' =>Hash::make(),
             'role' =>'0',
             'created_at' => now(),//php artisan db:seed --class=CategorySeeder（<--今回のseeder名）をひたすら繰り返す
             'updated_at' => now(),//現在の時刻を入れるメソッド
@@ -162,7 +162,7 @@ class UserSeeder extends Seeder
             'email' => 'higuchi_oneleaf@gmail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('takekurabe'), // パスワードをハッシュ化する関数
-            'remember_token' =>Hash::make(fake()->text(20)),
+            'remember_token' =>Hash::make(),
             'role' =>'0',
             'created_at' => now(),//php artisan db:seed --class=CategorySeeder（<--今回のseeder名）をひたすら繰り返す
             'updated_at' => now(),//現在の時刻を入れるメソッド
@@ -176,7 +176,7 @@ class UserSeeder extends Seeder
             'email' => 'yukichi@gmail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('gakumonnosusume'), // パスワードをハッシュ化する関数
-            'remember_token' =>Hash::make(fake()->text(20)),
+            'remember_token' =>Hash::make(),
             'role' =>'0',
             'created_at' => now(),//php artisan db:seed --class=CategorySeeder（<--今回のseeder名）をひたすら繰り返す
             'updated_at' => now(),//現在の時刻を入れるメソッド
@@ -189,7 +189,7 @@ class UserSeeder extends Seeder
             'email' => 'I-am-new-ichimanyen@gmail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('seiten0tsuke'), // パスワードをハッシュ化する関数
-            'remember_token' =>Hash::make(fake()->text(20)),
+            'remember_token' =>Hash::make(),
             'role' =>'0',
             'created_at' => now(),//php artisan db:seed --class=CategorySeeder（<--今回のseeder名）をひたすら繰り返す
             'updated_at' => now(),//現在の時刻を入れるメソッド
