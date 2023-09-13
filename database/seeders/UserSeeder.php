@@ -173,7 +173,7 @@ class UserSeeder extends Seeder
 
         \App\Models\Users::create([
             'name' => '福沢諭吉',
-            'email' => 'ichimanen@gmail.com',
+            'email' => 'yukichi@gmail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('gakumonnosusume'), // パスワードをハッシュ化する関数
             'remember_token' =>Hash::make(fake()->text(20)),
@@ -183,5 +183,19 @@ class UserSeeder extends Seeder
             //なお、対応するmigrationファイルにtimestamps()のカラムがないとエラーになる
             //idのカラムは要らない
         ]);
+
+        \App\Models\Users::create([
+            'name' => '渋沢栄一',
+            'email' => 'I-am-new-ichimanyen@gmail.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('seiten0tsuke'), // パスワードをハッシュ化する関数
+            'remember_token' =>Hash::make(fake()->text(20)),
+            'role' =>'0',
+            'created_at' => now(),//php artisan db:seed --class=CategorySeeder（<--今回のseeder名）をひたすら繰り返す
+            'updated_at' => now(),//現在の時刻を入れるメソッド
+            //なお、対応するmigrationファイルにtimestamps()のカラムがないとエラーになる
+            //idのカラムは要らない
+        ]);
+
     }
 }
