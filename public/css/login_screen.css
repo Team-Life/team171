@@ -1,0 +1,81 @@
+@import url(./home.css);
+
+.form_frame{
+    margin: 0 auto;
+    padding:auto;
+    width: 60%;
+    border: 1px solid rgb(0, 171, 174);
+    border-radius: 0.5rem;
+    position: relative;
+    background-color: white;
+    opacity: 0.8;
+}
+
+.form_top{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0.5rem;
+    text-align: left;
+    width: 100%;
+    margin: auto;
+    background-color: azure;
+    border: 1px solid rgb(0, 171, 174);
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+}
+
+form.login_form{
+    width: 50%;
+    margin: 3rem auto 1rem;
+    padding-right: 3rem;
+
+}
+.email_part{
+    display: flex;
+    margin-top: 3.5rem;
+}
+
+.password_part{
+    display: flex;
+    margin-top: 0.75rem;
+    text-indent: 2rem;
+}
+.email_part p,.password_part p{
+    margin: auto 0;
+    padding-right: 1.5rem;
+    text-align: right;
+}
+
+.email_input,.password_input{
+    width: 200%;
+}
+
+.remember_me{
+    padding-left: 4.2rem;
+}
+
+.Login.btn{
+    margin-top: 1.3rem;
+    margin-left: 4.2rem;
+    padding: 0 1.2rem;
+}
+
+.submit_btn_part{
+    display: flex;
+}
+
+.forgetpassword{
+    padding: auto 1rem;
+    margin: 2rem 1rem 1rem 1rem;
+    width: 100%;
+}
+
+.custom_message_position{
+    position: absolute;
+    top: 0.4rem;
+    left: 20rem;
+    width: 20rem;
+    color: red;
+    z-index: 10;
+}

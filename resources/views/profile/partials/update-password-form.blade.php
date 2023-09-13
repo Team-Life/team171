@@ -39,9 +39,9 @@
                     x-data="{ show: true }"
                     x-show="show"
                     x-transition
-                    x-init="setTimeout(() => show = false, 2000)"
+                    x-init="setTimeout(() => show = false, 4000)"
                     class="text-sm text-gray-600"
-                >{{ __('Saved.') }}</p>
+                >会員情報の更新をしました</p>
             @endif
         </div>
     </form>

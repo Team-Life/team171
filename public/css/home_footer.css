@@ -1,0 +1,10 @@
+/*footerのCSS*/
+@import url(./footer.css);
+
+footer {
+position: absolute;
+top: 37rem;
+z-index: 10;
+color: rgb(0,171,174);
+
+}
