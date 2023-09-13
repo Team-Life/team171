@@ -14,7 +14,7 @@
         <div class="index-items-innerwrap mx-auto sm:px-6 lg:px-8">
             <div class="flex">
                 <div class="each_item_show container" >
-                    <p>個別表示</p>
+                    <p style="font-size:2rem;"><strong>個別表示</strong></p>
                 </div>
                 @include('layouts.categories_dropdown')
             </div>

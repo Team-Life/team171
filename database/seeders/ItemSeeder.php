@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class ItemsSeeder extends Seeder
+class ItemSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -70,7 +70,7 @@ class ItemsSeeder extends Seeder
             'user_id' => fake()->numberBetween($min=30,$max=100),//指定した範囲内の整数のどれか
             'name' => '我が輩の万年筆',
             'type' => 2,
-            'detail' =>'これじゃないとだめなやつ',
+            'detail' =>'これじゃないとだめなやつ。誰だ出品したやつ。',
             // witchwatchみたいな英語として認識されない文字があるときは、code spell checkerでその単語を無視する設定をしないとエラーになるので注意
             'delete_flag' => 0,
             'updated_by' => fake()->numberBetween($min=1,$max=10),
