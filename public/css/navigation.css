@@ -32,6 +32,8 @@
     left: 14rem;
     margin: auto 0;
     padding: 0;
+    color: white;
+    border: none;
 }
 
 .Itempagelinks a {
@@ -40,6 +42,12 @@
     font-size: 1.2rem;
     scroll-behavior: smooth;
     margin: auto 0;
+    color: white;
+    border: none;
+}
+.profile_logout_links:hover{
+    text-decoration: underline;
+    color: blue;
 }
 .Itempagelinks a:hover,.profile_logout_links a:hover,.profile_logout_links form:hover {
     text-decoration: underline;
@@ -63,14 +71,31 @@
     padding:auto 1rem;
     margin: auto 0;
     display: flex;
+    color: white;
+    border: none;
 }
 .profile_logout_links a,.profile_logout_links form{
     display: block;
     font-size: 1.2rem;
     margin:auto 1rem;
+    color: white;
+    border: none;
 }
 
+.profile_logout_links:hover{
+    text-decoration: underline;
+    color: blue;
+}
 
+.profile_logout_links a:hover,.profile_logout_links form:hover{
+    text-decoration: underline;
+    color: blue;
+}
+
+.profile_logout_links form button:hover{
+    text-decoration: underline;
+    color: blue;
+}
 /*home_navのCSS*/
 
 .homenavbar {
@@ -115,6 +140,8 @@
     font-size: 1.5rem;
     margin: auto 0;
     padding: 0;
+    color: white;
+    border: none;
 }
 
 .pagelinks a {
@@ -123,6 +150,8 @@
     font-size: 1rem;
     scroll-behavior: smooth;
     margin: auto 0;
+    color: white;
+    border: none;
 }
 .pagelinks a:hover {
     text-decoration: underline;
