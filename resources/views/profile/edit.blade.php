@@ -1,7 +1,12 @@
 <x-app-layout>
 
     <x-slot name="header">
-        @include('layouts.navigations.main_nav')
+        <div class="conditional-include1">
+            @include('layouts.navigations.main_nav')
+        </div>
+        <div class="conditional-include2">
+            @include('layouts.navigations.responsive_nav')
+        </div>
     </x-slot>
 
     <div class="py-12">
