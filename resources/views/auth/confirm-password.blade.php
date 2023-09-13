@@ -1,4 +1,12 @@
 <x-guest-layout>
+    <x-slot name="header">
+        <div class="conditional-include1">
+            @include('layouts.navigations.home_nav')
+        </div>
+        <div class="conditional-include2">
+            @include('layouts.navigations.responsive_nav')
+        </div>
+    </x-slot>
     <div class="mb-4 text-sm text-gray-600">
         {{ __('This is a secure area of the application. Please confirm your password before continuing.') }}
     </div>

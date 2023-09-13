@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\Category;
+use App\Models\Users;
+use App\Models\Item;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -15,7 +19,11 @@ class PasswordResetLinkController extends Controller
      */
     public function create(): View
     {
-        return view('auth.forgot-password');
+        $choices = Category::all();
+        $auth_users = Users::all();
+        $items = Item::where('delete_flag', 0)->get();
+        $login_user = Auth::user();//ログインユーザー情報を取得
+        return view('auth.forgot-password',compact('auth_users','items','login_user','choices'));
     }
 
     /**

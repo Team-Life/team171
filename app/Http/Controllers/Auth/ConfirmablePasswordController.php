@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\Category;
+use App\Models\Users;
+use App\Models\Item;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
@@ -17,7 +20,11 @@ class ConfirmablePasswordController extends Controller
      */
     public function show(): View
     {
-        return view('auth.confirm-password');
+        $choices = Category::all();
+        $auth_users = Users::all();
+        $items = Item::where('delete_flag', 0)->get();
+        $login_user = Auth::user();//ログインユーザー情報を取得
+        return view('auth.confirm-password',compact('auth_users','items','login_user','choices'));
     }
 
     /**
@@ -36,6 +43,6 @@ class ConfirmablePasswordController extends Controller
 
         $request->session()->put('auth.password_confirmed_at', time());
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        return redirect()->intended(RouteServiceProvider::home);
     }
 }
