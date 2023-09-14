@@ -38,6 +38,30 @@ class UserSeeder extends Seeder
         ]);
 
         \App\Models\Users::create([
+            'name' => '管理者3',
+            'email' => 'admin03@gmail.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('administrator3'), // パスワードをハッシュ化する関数
+            'role' =>'3',
+            'created_at' => now(),//php artisan db:seed --class=CategorySeeder（<--今回のseeder名）をひたすら繰り返す
+            'updated_at' => now(),//現在の時刻を入れるメソッド
+            //なお、対応するmigrationファイルにtimestamps()のカラムがないとエラーになる
+            //idのカラムは要らない
+        ]);
+
+        \App\Models\Users::create([
+            'name' => '管理者4',
+            'email' => 'admin04@gmail.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('administrator4'), // パスワードをハッシュ化する関数
+            'role' =>'4',
+            'created_at' => now(),//php artisan db:seed --class=CategorySeeder（<--今回のseeder名）をひたすら繰り返す
+            'updated_at' => now(),//現在の時刻を入れるメソッド
+            //なお、対応するmigrationファイルにtimestamps()のカラムがないとエラーになる
+            //idのカラムは要らない
+        ]);
+
+        \App\Models\Users::create([
             'name' => '夏目漱石',
             'email' => 'wagahai@gmail.com',
             'email_verified_at' => now(),
