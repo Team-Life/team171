@@ -19,7 +19,7 @@ use App\Http\Controllers\UsersController;
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
-|
+|　
 
 /**Controllerを使ったRoute設定は下記のように
  * Route::HTTPメソッド('php artisan serveをしたときにでてくるやつに付随させるURLの末尾（※自分で決め手よい）')
