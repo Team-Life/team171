@@ -10,8 +10,8 @@
         {{-- ここに入力したものは、resourceのlayoutsフォルダの中のapp.blade.phpの
             {{ slot }}のところに挿入され、「app.blade.php」が表示される--}}
 
-    <div class="index-items-outerwrap">
-        <div class="index-items-innerwrap mx-auto sm:px-6 lg:px-8">
+    <div class="index-items-outerwrap" style="margin-left: auto; margin-right:5%;margin-bottom:1rem;">
+        <div class="index-items-innerwrap sm:px-6 lg:px-8">
             <div class="flex">
                 <div class="search_box">
                     <form class="search_form" method="post" action="{{ route('searched.items.index') }}" enctype="multipart/form-data">
@@ -26,7 +26,7 @@
                 </div>
                 @include('layouts.categories_dropdown')
             </div>
-            <table class="index_table table table-striped table-hover table-bordered">
+            <table class="index_table table table-striped table-hover table-bordered" style="margin-bottom:1rem;">
                 <thead>
                         <tr>
                         <th scope="col" class="col_id">ID</th>
@@ -71,5 +71,6 @@
             </table>
         </div>
     </div>
+    @include('layouts.footer')
 </x-app-layout>
 

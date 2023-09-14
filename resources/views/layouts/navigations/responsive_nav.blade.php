@@ -1,7 +1,7 @@
 <nav x-data="{ open: false }" class="border-b border-gray-100" >
-    <div class="responsive_navbar navbar-expand-lg bd-navbar sticky-top sm:fixed sm:top-0 sm:right-0 text-right z-10 flex">
+    <div class="responsive_navbar navbar-expand-lg bd-navbar sticky-top sm:fixed sm:top-0 sm:right-0 text-right z-10 flex" >
         {{-- Split dropstart button by Bootstrap--}}
-        <div class="btn-group dropstart">
+        <div class="btn-group dropstart" style="right:-5rem;">
             <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false"
                 style="color: black; font-weight:bold; background-color:white ; ">
             </button>

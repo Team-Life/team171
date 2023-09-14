@@ -29,7 +29,8 @@ body{
 }
 
 .categories_dropdown{
-    margin-left: 42rem;
+    margin-left: 6rem;
+    margin-top: 4rem;
     background-color: black;
     opacity: 1.0;
     color: white;
@@ -140,3 +141,6 @@ body{
     margin-top: 10%;
 }
 
+.edit_part.p-4.sm\:p-8.bg-white.shadow.sm\:rounded-lg.flex {
+    width: 100%;
+}

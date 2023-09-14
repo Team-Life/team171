@@ -3,5 +3,6 @@
 
 footer {
     position: absolute;
-    bottom: -20rem;
+    bottom: -50rem;
+    margin-top: 3rem;
 }
